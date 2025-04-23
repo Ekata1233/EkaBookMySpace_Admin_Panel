@@ -38,9 +38,16 @@ const sitemap: MenuItem[] = [
       },
       {
         id: 11,
-        name: 'Vendor-Request',
+        name: 'Office-Space-Request',
         path: paths.vendorrequest,
-        pathName: 'vendor-request',
+        pathName: 'office-space-request',
+        active: true,
+      },
+      {
+        id: 12,
+        name: 'Office-Space-List',
+        path: paths.officespacelist,
+        pathName: 'office-space-list',
         active: true,
       },
     ],

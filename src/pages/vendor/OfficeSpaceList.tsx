@@ -14,10 +14,8 @@ interface OfficeSpace {
   isAdminApprove: boolean;
 }
 
-const VendorRequest: React.FC = () => {
+const OfficeSpaceList: React.FC = () => {
   const [officeSpaces, setOfficeSpaces] = useState<OfficeSpace[]>([]);
-
-  console.log('office·spaces·:·', officeSpaces);
 
   const fetchOfficeSpaces = async () => {
     try {
@@ -61,7 +59,7 @@ const VendorRequest: React.FC = () => {
 
   return (
     <div style={{ padding: '20px', width: '100%' }}>
-      <h2 style={{ color: '#6BB7BE', marginBottom: '20px' }}>Office Space Requests</h2>
+      <h2 style={{ color: '#6BB7BE', marginBottom: '20px' }}>Office Space List</h2>
 
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
@@ -78,9 +76,9 @@ const VendorRequest: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {officeSpaces.filter((office) => !office.isAdminApprove).length > 0 ? (
+          {officeSpaces.filter((office) => office.isAdminApprove).length > 0 ? (
             officeSpaces
-              .filter((office) => !office.isAdminApprove)
+              .filter((office) => office.isAdminApprove)
               .map((office, index) => (
                 <tr key={office._id} style={{ borderBottom: '1px solid #ccc' }}>
                   <td style={tdStyle}>{index + 1}</td>
@@ -108,7 +106,7 @@ const VendorRequest: React.FC = () => {
           ) : (
             <tr>
               <td colSpan={9} style={{ textAlign: 'center', padding: '20px' }}>
-                No office space requests found.
+                No vendor requests found.
               </td>
             </tr>
           )}
@@ -137,4 +135,4 @@ const btnStyle: React.CSSProperties = {
   cursor: 'pointer',
 };
 
-export default VendorRequest;
+export default OfficeSpaceList;
