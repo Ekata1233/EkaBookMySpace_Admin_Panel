@@ -131,7 +131,15 @@ const OfficeTourPage: React.FC = () => {
                 <tr key={tour._id} style={{ borderBottom: "1px solid #ccc" }}>
                   <td style={tdStyle}>{index + 1}</td>
                   <td style={tdStyle}>{tour.title}</td>
-                  <td style={tdStyle}>{tour.description}</td>
+                  <td
+                    style={{
+                      ...tdStyle,
+                      width: '400px',
+                      whiteSpace: 'wrap',
+                    }}
+                  >
+                    {tour.description}
+                  </td>
                   <td style={tdStyle}>
                     {tour.image ? (
                       <img
