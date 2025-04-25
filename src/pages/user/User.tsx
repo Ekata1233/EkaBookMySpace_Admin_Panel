@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 type User = {
   _id?: string;
@@ -16,16 +16,18 @@ const UserPage: React.FC = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch('https://book-my-space-eta.vercel.app/api/auth/signup');
+        const response = await fetch(
+          "https://book-my-space-eta.vercel.app/api/auth/signup",
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
         const data = await response.json();
         setUsers(data.users);
-        console.log('Fetched Users:', data);
+        console.log("Fetched Users:", data);
       } catch (error) {
-        console.error('Error fetching users:', error);
+        console.error("Error fetching users:", error);
       }
     };
 
@@ -33,11 +35,11 @@ const UserPage: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ width: '100%', padding: '20px' }}>
-      <h2 style={{ color: '#6BB7BE', marginBottom: '20px' }}>User List</h2>
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+    <div style={{ width: "100%", padding: "20px" }}>
+      <h2 style={{ color: "#6BB7BE", marginBottom: "20px" }}>User List</h2>
+      <table style={{ width: "100%", borderCollapse: "collapse" }}>
         <thead>
-          <tr style={{ backgroundColor: '#6BB7BE', color: '#fff' }}>
+          <tr style={{ backgroundColor: "#6BB7BE", color: "#fff" }}>
             <th style={thStyle}>#</th>
             <th style={thStyle}>User Info</th>
             <th style={thStyle}>Phone</th>
@@ -49,26 +51,33 @@ const UserPage: React.FC = () => {
         <tbody>
           {users.length > 0 ? (
             users.map((user, index) => (
-              <tr key={user._id || index} style={{ borderBottom: '1px solid #ccc' }}>
+              <tr
+                key={user._id || index}
+                style={{ borderBottom: "1px solid #ccc" }}
+              >
                 <td style={tdStyle}>{index + 1}</td>
                 <td style={tdStyle}>
-                  <strong>{user.name || 'N/A'}</strong>
+                  <strong>{user.name || "N/A"}</strong>
                   <br />
-                  <small>{user.email || 'N/A'}</small>
+                  <small>{user.email || "N/A"}</small>
                 </td>
-                <td style={tdStyle}>{user.phone || 'N/A'}</td>
-                <td style={tdStyle}>{user.address || 'N/A'}</td>
+                <td style={tdStyle}>{user.phone || "N/A"}</td>
+                <td style={tdStyle}>{user.address || "N/A"}</td>
                 <td style={tdStyle}>
-                  {user.createdAt ? new Date(user.createdAt).toLocaleString() : 'N/A'}
+                  {user.createdAt
+                    ? new Date(user.createdAt).toLocaleString()
+                    : "N/A"}
                 </td>
                 <td style={tdStyle}>
-                  {user.updatedAt ? new Date(user.updatedAt).toLocaleString() : 'N/A'}
+                  {user.updatedAt
+                    ? new Date(user.updatedAt).toLocaleString()
+                    : "N/A"}
                 </td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan={6} style={{ textAlign: 'center', padding: '20px' }}>
+              <td colSpan={6} style={{ textAlign: "center", padding: "20px" }}>
                 No users found.
               </td>
             </tr>
@@ -80,14 +89,14 @@ const UserPage: React.FC = () => {
 };
 
 const thStyle: React.CSSProperties = {
-  padding: '12px',
-  textAlign: 'left',
-  fontWeight: 'bold',
+  padding: "12px",
+  textAlign: "left",
+  fontWeight: "bold",
 };
 
 const tdStyle: React.CSSProperties = {
-  padding: '12px',
-  verticalAlign: 'top',
+  padding: "12px",
+  verticalAlign: "top",
 };
 
 export default UserPage;

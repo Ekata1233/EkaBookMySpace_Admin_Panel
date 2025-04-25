@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface Vendor {
   id: number;
@@ -8,9 +8,9 @@ interface Vendor {
 
 const VendorList: React.FC = () => {
   const vendors: Vendor[] = [
-    { id: 1, name: 'Vendor A', email: 'a@example.com' },
-    { id: 2, name: 'Vendor B', email: 'b@example.com' },
-    { id: 3, name: 'Vendor C', email: 'c@example.com' },
+    { id: 1, name: "Vendor A", email: "a@example.com" },
+    { id: 2, name: "Vendor B", email: "b@example.com" },
+    { id: 3, name: "Vendor C", email: "c@example.com" },
   ];
 
   const handleUpdate = (id: number): void => {
@@ -22,11 +22,11 @@ const VendorList: React.FC = () => {
   };
 
   return (
-    <div style={{ width: '100%', padding: '20px' }}>
-      <h2 style={{ color: '#6BB7BE', marginBottom: '20px' }}>Vendor List</h2>
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+    <div style={{ width: "100%", padding: "20px" }}>
+      <h2 style={{ color: "#6BB7BE", marginBottom: "20px" }}>Vendor List</h2>
+      <table style={{ width: "100%", borderCollapse: "collapse" }}>
         <thead>
-          <tr style={{ backgroundColor: '#6BB7BE', color: '#fff' }}>
+          <tr style={{ backgroundColor: "#6BB7BE", color: "#fff" }}>
             <th style={thStyle}>#</th>
             <th style={thStyle}>Vendor Info</th>
             <th style={thStyle}>Update</th>
@@ -35,7 +35,7 @@ const VendorList: React.FC = () => {
         </thead>
         <tbody>
           {vendors.map((vendor, index) => (
-            <tr key={vendor.id} style={{ borderBottom: '1px solid #ccc' }}>
+            <tr key={vendor.id} style={{ borderBottom: "1px solid #ccc" }}>
               <td style={tdStyle}>{index + 1}</td>
               <td style={tdStyle}>
                 <strong>{vendor.name}</strong>
@@ -45,7 +45,7 @@ const VendorList: React.FC = () => {
               <td style={tdStyle}>
                 <button
                   onClick={() => handleUpdate(vendor.id)}
-                  style={{ ...btnStyle, backgroundColor: '#6BB7BE' }}
+                  style={{ ...btnStyle, backgroundColor: "#6BB7BE" }}
                 >
                   Update
                 </button>
@@ -53,7 +53,7 @@ const VendorList: React.FC = () => {
               <td style={tdStyle}>
                 <button
                   onClick={() => handleDelete(vendor.id)}
-                  style={{ ...btnStyle, backgroundColor: '#DC3545' }}
+                  style={{ ...btnStyle, backgroundColor: "#DC3545" }}
                 >
                   Delete
                 </button>
@@ -67,22 +67,22 @@ const VendorList: React.FC = () => {
 };
 
 const thStyle: React.CSSProperties = {
-  padding: '12px',
-  textAlign: 'left',
-  fontWeight: 'bold',
+  padding: "12px",
+  textAlign: "left",
+  fontWeight: "bold",
 };
 
 const tdStyle: React.CSSProperties = {
-  padding: '12px',
-  verticalAlign: 'top',
+  padding: "12px",
+  verticalAlign: "top",
 };
 
 const btnStyle: React.CSSProperties = {
-  padding: '8px 12px',
-  border: 'none',
-  borderRadius: '4px',
-  color: '#fff',
-  cursor: 'pointer',
+  padding: "8px 12px",
+  border: "none",
+  borderRadius: "4px",
+  color: "#fff",
+  cursor: "pointer",
 };
 
 export default VendorList;

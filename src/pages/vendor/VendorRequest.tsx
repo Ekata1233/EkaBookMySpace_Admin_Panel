@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-const API_URL = 'https://book-my-space-eta.vercel.app/api/officeSpaces';
+const API_URL = "https://book-my-space-eta.vercel.app/api/officeSpaces";
 
 interface OfficeSpace {
   _id: string;
@@ -17,7 +17,7 @@ interface OfficeSpace {
 const VendorRequest: React.FC = () => {
   const [officeSpaces, setOfficeSpaces] = useState<OfficeSpace[]>([]);
 
-  console.log('office·spaces·:·', officeSpaces);
+  console.log("office·spaces·:·", officeSpaces);
 
   const fetchOfficeSpaces = async () => {
     try {
@@ -26,32 +26,32 @@ const VendorRequest: React.FC = () => {
       if (Array.isArray(json.data)) {
         setOfficeSpaces(json.data);
       } else {
-        console.error('Invalid response format:', json);
+        console.error("Invalid response format:", json);
       }
     } catch (err) {
-      console.error('Error fetching office spaces:', err);
+      console.error("Error fetching office spaces:", err);
     }
   };
 
   const handleApprove = async (id: string) => {
     try {
       const res = await fetch(`${API_URL}/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ isAdminApprove: true }),
       });
 
       if (!res.ok) {
-        throw new Error('Failed to approve the request');
+        throw new Error("Failed to approve the request");
       }
 
       const data = await res.json();
-      console.log('data·:·', data);
-      alert('Office space approved successfully!');
+      console.log("data·:·", data);
+      alert("Office space approved successfully!");
       fetchOfficeSpaces(); // refresh the list
     } catch (err) {
-      console.error('Error approving office space:', err);
-      alert('Something went wrong while approving.');
+      console.error("Error approving office space:", err);
+      alert("Something went wrong while approving.");
     }
   };
 
@@ -60,12 +60,14 @@ const VendorRequest: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ padding: '20px', width: '100%' }}>
-      <h2 style={{ color: '#6BB7BE', marginBottom: '20px' }}>Office Space Requests</h2>
+    <div style={{ padding: "20px", width: "100%" }}>
+      <h2 style={{ color: "#6BB7BE", marginBottom: "20px" }}>
+        Office Space Requests
+      </h2>
 
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <table style={{ width: "100%", borderCollapse: "collapse" }}>
         <thead>
-          <tr style={{ backgroundColor: '#6BB7BE', color: '#fff' }}>
+          <tr style={{ backgroundColor: "#6BB7BE", color: "#fff" }}>
             <th style={thStyle}>#</th>
             <th style={thStyle}>Office Name</th>
             <th style={thStyle}>Category</th>
@@ -78,11 +80,12 @@ const VendorRequest: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {officeSpaces.filter((office) => !office.isAdminApprove).length > 0 ? (
+          {officeSpaces.filter((office) => !office.isAdminApprove).length >
+          0 ? (
             officeSpaces
               .filter((office) => !office.isAdminApprove)
               .map((office, index) => (
-                <tr key={office._id} style={{ borderBottom: '1px solid #ccc' }}>
+                <tr key={office._id} style={{ borderBottom: "1px solid #ccc" }}>
                   <td style={tdStyle}>{index + 1}</td>
                   <td style={tdStyle}>{office.officeSpaceName}</td>
                   <td style={tdStyle}>{office.category}</td>
@@ -93,11 +96,15 @@ const VendorRequest: React.FC = () => {
                   <td style={tdStyle}>{office.rate}</td>
                   <td style={tdStyle}>
                     {office.isAdminApprove ? (
-                      <button style={{ ...btnStyle, backgroundColor: '#6BB7BE' }}>Approved</button>
+                      <button
+                        style={{ ...btnStyle, backgroundColor: "#6BB7BE" }}
+                      >
+                        Approved
+                      </button>
                     ) : (
                       <button
                         onClick={() => handleApprove(office._id)}
-                        style={{ ...btnStyle, backgroundColor: 'green' }}
+                        style={{ ...btnStyle, backgroundColor: "green" }}
                       >
                         Approve
                       </button>
@@ -107,7 +114,7 @@ const VendorRequest: React.FC = () => {
               ))
           ) : (
             <tr>
-              <td colSpan={9} style={{ textAlign: 'center', padding: '20px' }}>
+              <td colSpan={9} style={{ textAlign: "center", padding: "20px" }}>
                 No office space requests found.
               </td>
             </tr>
@@ -119,22 +126,22 @@ const VendorRequest: React.FC = () => {
 };
 
 const thStyle: React.CSSProperties = {
-  padding: '12px',
-  textAlign: 'left',
-  fontWeight: 'bold',
+  padding: "12px",
+  textAlign: "left",
+  fontWeight: "bold",
 };
 
 const tdStyle: React.CSSProperties = {
-  padding: '12px',
-  verticalAlign: 'top',
+  padding: "12px",
+  verticalAlign: "top",
 };
 
 const btnStyle: React.CSSProperties = {
-  padding: '8px 12px',
-  border: 'none',
-  borderRadius: '4px',
-  color: '#fff',
-  cursor: 'pointer',
+  padding: "8px 12px",
+  border: "none",
+  borderRadius: "4px",
+  color: "#fff",
+  cursor: "pointer",
 };
 
 export default VendorRequest;

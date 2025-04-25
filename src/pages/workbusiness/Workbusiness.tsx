@@ -1,5 +1,5 @@
-import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
-import { Form, Row, Col } from 'react-bootstrap';
+import React, { useEffect, useState, ChangeEvent, FormEvent } from "react";
+import { Form, Row, Col } from "react-bootstrap";
 
 interface WorkBusiness {
   _id: string;
@@ -19,14 +19,14 @@ interface WorkBusinessForm {
   imageBottom: File | null;
 }
 
-const API_URL = 'https://book-my-space-eta.vercel.app/api/workbusiness';
+const API_URL = "https://book-my-space-eta.vercel.app/api/workbusiness";
 
 const WorkBusinessPage: React.FC = () => {
   const [entries, setEntries] = useState<WorkBusiness[]>([]);
   const [form, setForm] = useState<WorkBusinessForm>({
-    title: '',
-    description1: '',
-    description2: '',
+    title: "",
+    description1: "",
+    description2: "",
     imageTop: null,
     imageBottom: null,
   });
@@ -42,20 +42,22 @@ const WorkBusinessPage: React.FC = () => {
     try {
       const res = await fetch(API_URL);
       const json = await res.json();
-      console.log('Fetched WorkBusiness data:', json);
+      console.log("Fetched WorkBusiness data:", json);
       if (Array.isArray(json.data)) {
         setEntries(json.data);
       }
     } catch (err) {
-      console.error('Error fetching WorkBusiness entries:', err);
+      console.error("Error fetching WorkBusiness entries:", err);
     }
   };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name } = e.target;
 
     if (
-      (name === 'imageTop' || name === 'imageBottom') &&
+      (name === "imageTop" || name === "imageBottom") &&
       e.target instanceof HTMLInputElement &&
       e.target.files
     ) {
@@ -69,13 +71,13 @@ const WorkBusinessPage: React.FC = () => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('title', form.title);
-    formData.append('description1', form.description1);
-    formData.append('description2', form.description2);
-    if (form.imageTop) formData.append('imageTop', form.imageTop);
-    if (form.imageBottom) formData.append('imageBottom', form.imageBottom);
+    formData.append("title", form.title);
+    formData.append("description1", form.description1);
+    formData.append("description2", form.description2);
+    if (form.imageTop) formData.append("imageTop", form.imageTop);
+    if (form.imageBottom) formData.append("imageBottom", form.imageBottom);
 
-    const method = isEditing ? 'PUT' : 'POST';
+    const method = isEditing ? "PUT" : "POST";
     const url = isEditing ? `${API_URL}/${editId}` : API_URL;
 
     try {
@@ -85,9 +87,9 @@ const WorkBusinessPage: React.FC = () => {
       });
 
       setForm({
-        title: '',
-        description1: '',
-        description2: '',
+        title: "",
+        description1: "",
+        description2: "",
         imageTop: null,
         imageBottom: null,
       });
@@ -96,16 +98,16 @@ const WorkBusinessPage: React.FC = () => {
       setShowForm(false);
       fetchEntries();
     } catch (err) {
-      console.error('Error submitting form:', err);
+      console.error("Error submitting form:", err);
     }
   };
 
   const handleDelete = async (id: string) => {
     try {
-      await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+      await fetch(`${API_URL}/${id}`, { method: "DELETE" });
       fetchEntries();
     } catch (err) {
-      console.error('Error deleting entry:', err);
+      console.error("Error deleting entry:", err);
     }
   };
 
@@ -123,12 +125,12 @@ const WorkBusinessPage: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: '20px', width: '100%' }}>
-      <h2 style={{ color: '#6BB7BE', marginBottom: '20px' }}>Work Business</h2>
+    <div style={{ padding: "20px", width: "100%" }}>
+      <h2 style={{ color: "#6BB7BE", marginBottom: "20px" }}>Work Business</h2>
 
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <table style={{ width: "100%", borderCollapse: "collapse" }}>
         <thead>
-          <tr style={{ backgroundColor: '#6BB7BE', color: '#fff' }}>
+          <tr style={{ backgroundColor: "#6BB7BE", color: "#fff" }}>
             <th style={thStyle}>#</th>
             <th style={thStyle}>Title</th>
             <th style={thStyle}>Description 1</th>
@@ -143,7 +145,7 @@ const WorkBusinessPage: React.FC = () => {
             entries
               .filter((entry) => !entry.isDeleted)
               .map((entry, index) => (
-                <tr key={entry._id} style={{ borderBottom: '1px solid #ccc' }}>
+                <tr key={entry._id} style={{ borderBottom: "1px solid #ccc" }}>
                   <td style={tdStyle}>{index + 1}</td>
                   <td style={tdStyle}>{entry.title}</td>
                   <td style={tdStyle}>{entry.description1}</td>
@@ -153,10 +155,10 @@ const WorkBusinessPage: React.FC = () => {
                       <img
                         src={entry.imageTop}
                         alt="Top"
-                        style={{ width: '100px', borderRadius: '6px' }}
+                        style={{ width: "100px", borderRadius: "6px" }}
                       />
                     ) : (
-                      'No image'
+                      "No image"
                     )}
                   </td>
                   <td style={tdStyle}>
@@ -164,22 +166,22 @@ const WorkBusinessPage: React.FC = () => {
                       <img
                         src={entry.imageBottom}
                         alt="Bottom"
-                        style={{ width: '100px', borderRadius: '6px' }}
+                        style={{ width: "100px", borderRadius: "6px" }}
                       />
                     ) : (
-                      'No image'
+                      "No image"
                     )}
                   </td>
                   <td style={tdStyle}>
                     <button
                       onClick={() => handleEdit(entry)}
-                      style={{ ...btnStyle, backgroundColor: '#6BB7BE' }}
+                      style={{ ...btnStyle, backgroundColor: "#6BB7BE" }}
                     >
                       Edit
-                    </button>{' '}
+                    </button>{" "}
                     <button
                       onClick={() => handleDelete(entry._id)}
-                      style={{ ...btnStyle, backgroundColor: '#DC3545' }}
+                      style={{ ...btnStyle, backgroundColor: "#DC3545" }}
                     >
                       Delete
                     </button>
@@ -188,7 +190,7 @@ const WorkBusinessPage: React.FC = () => {
               ))
           ) : (
             <tr>
-              <td colSpan={7} style={{ textAlign: 'center', padding: '20px' }}>
+              <td colSpan={7} style={{ textAlign: "center", padding: "20px" }}>
                 No entries found.
               </td>
             </tr>
@@ -196,17 +198,17 @@ const WorkBusinessPage: React.FC = () => {
         </tbody>
       </table>
 
-      <div style={{ marginTop: '20px' }}>
+      <div style={{ marginTop: "20px" }}>
         <button
           onClick={() => setShowForm(!showForm)}
-          style={{ ...btnStyle, backgroundColor: '#6BB7BE' }}
+          style={{ ...btnStyle, backgroundColor: "#6BB7BE" }}
         >
-          {showForm ? 'Close Form' : 'Add Entry'}
+          {showForm ? "Close Form" : "Add Entry"}
         </button>
       </div>
 
       {showForm && (
-        <Form onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
+        <Form onSubmit={handleSubmit} style={{ marginTop: "20px" }}>
           <Form.Group as={Row} className="mb-4" controlId="formTitle">
             <Form.Label column sm={2} style={labelStyle}>
               Title
@@ -288,9 +290,9 @@ const WorkBusinessPage: React.FC = () => {
             </Col>
           </Form.Group>
 
-          <div style={{ textAlign: 'right' }}>
+          <div style={{ textAlign: "right" }}>
             <button type="submit" style={submitButtonStyle}>
-              {isEditing ? 'Update' : 'Add'} Entry
+              {isEditing ? "Update" : "Add"} Entry
             </button>
           </div>
         </Form>
@@ -300,43 +302,43 @@ const WorkBusinessPage: React.FC = () => {
 };
 
 const thStyle: React.CSSProperties = {
-  padding: '12px',
-  textAlign: 'left',
-  fontWeight: 'bold',
+  padding: "12px",
+  textAlign: "left",
+  fontWeight: "bold",
 };
 
 const tdStyle: React.CSSProperties = {
-  padding: '12px',
-  verticalAlign: 'top',
+  padding: "12px",
+  verticalAlign: "top",
 };
 
 const btnStyle: React.CSSProperties = {
-  padding: '8px 12px',
-  border: 'none',
-  borderRadius: '4px',
-  color: '#fff',
-  cursor: 'pointer',
+  padding: "8px 12px",
+  border: "none",
+  borderRadius: "4px",
+  color: "#fff",
+  cursor: "pointer",
 };
 
 const labelStyle: React.CSSProperties = {
-  fontWeight: 'bold',
-  marginTop: '10px',
-  display: 'block',
+  fontWeight: "bold",
+  marginTop: "10px",
+  display: "block",
 };
 
 const inputStyle: React.CSSProperties = {
-  height: '45px',
-  width: '100%',
+  height: "45px",
+  width: "100%",
 };
 
 const submitButtonStyle: React.CSSProperties = {
   ...btnStyle,
-  backgroundColor: '#6BB7BE',
-  padding: '10px 20px',
-  fontWeight: 'bold',
-  borderRadius: '6px',
-  marginTop: '10px',
-  border: 'none',
+  backgroundColor: "#6BB7BE",
+  padding: "10px 20px",
+  fontWeight: "bold",
+  borderRadius: "6px",
+  marginTop: "10px",
+  border: "none",
 };
 
 export default WorkBusinessPage;

@@ -1,7 +1,7 @@
-import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col'; // ✅ This was missing
+import React, { useEffect, useState, ChangeEvent, FormEvent } from "react";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col"; // ✅ This was missing
 
 interface Box {
   _id: string;
@@ -19,15 +19,15 @@ interface BoxForm {
   description: string;
 }
 
-const API_URL = 'https://book-my-space-eta.vercel.app/api/boxes';
+const API_URL = "https://book-my-space-eta.vercel.app/api/boxes";
 
 const Boxes: React.FC = () => {
   const [boxes, setBoxes] = useState<Box[]>([]);
   const [form, setForm] = useState<BoxForm>({
-    icon: '',
-    link: '',
-    text: '',
-    description: '',
+    icon: "",
+    link: "",
+    text: "",
+    description: "",
   });
   const [showForm, setShowForm] = useState<boolean>(false);
   const [isEditing, setIsEditing] = useState<boolean>(false);
@@ -37,15 +37,15 @@ const Boxes: React.FC = () => {
     try {
       const res = await fetch(API_URL);
       const json = await res.json();
-      console.log('Fetched Boxes:', json);
+      console.log("Fetched Boxes:", json);
 
       if (Array.isArray(json.data)) {
         setBoxes(json.data);
       } else {
-        console.error('Invalid data format:', json);
+        console.error("Invalid data format:", json);
       }
     } catch (err) {
-      console.error('Error fetching boxes:', err);
+      console.error("Error fetching boxes:", err);
     }
   };
 
@@ -53,7 +53,9 @@ const Boxes: React.FC = () => {
     fetchBoxes();
   }, []);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
@@ -62,20 +64,20 @@ const Boxes: React.FC = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const method = isEditing ? 'PUT' : 'POST';
+    const method = isEditing ? "PUT" : "POST";
     const url = isEditing ? `${API_URL}/${editId}` : API_URL;
 
     await fetch(url, {
       method,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
     });
 
     setForm({
-      icon: '',
-      link: '',
-      text: '',
-      description: '',
+      icon: "",
+      link: "",
+      text: "",
+      description: "",
     });
     setIsEditing(false);
     setEditId(null);
@@ -85,7 +87,7 @@ const Boxes: React.FC = () => {
 
   const handleDelete = async (id: string) => {
     await fetch(`${API_URL}/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
     });
     fetchBoxes();
   };
@@ -103,12 +105,14 @@ const Boxes: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: '20px', width: '100%' }}>
-      <h2 style={{ color: '#6BB7BE', marginBottom: '20px' }}>Boxes Management</h2>
+    <div style={{ padding: "20px", width: "100%" }}>
+      <h2 style={{ color: "#6BB7BE", marginBottom: "20px" }}>
+        Boxes Management
+      </h2>
 
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <table style={{ width: "100%", borderCollapse: "collapse" }}>
         <thead>
-          <tr style={{ backgroundColor: '#6BB7BE', color: '#fff' }}>
+          <tr style={{ backgroundColor: "#6BB7BE", color: "#fff" }}>
             <th style={thStyle}>#</th>
             <th style={thStyle}>Icon</th>
             <th style={thStyle}>Link</th>
@@ -122,7 +126,7 @@ const Boxes: React.FC = () => {
             boxes
               .filter((box) => !box.isDeleted)
               .map((box, index) => (
-                <tr key={box._id} style={{ borderBottom: '1px solid #ccc' }}>
+                <tr key={box._id} style={{ borderBottom: "1px solid #ccc" }}>
                   <td style={tdStyle}>{index + 1}</td>
                   <td style={tdStyle}>{box.icon}</td>
                   <td style={tdStyle}>{box.link}</td>
@@ -131,13 +135,13 @@ const Boxes: React.FC = () => {
                   <td style={tdStyle}>
                     <button
                       onClick={() => handleEdit(box)}
-                      style={{ ...btnStyle, backgroundColor: '#6BB7BE' }}
+                      style={{ ...btnStyle, backgroundColor: "#6BB7BE" }}
                     >
                       Edit
-                    </button>{' '}
+                    </button>{" "}
                     <button
                       onClick={() => handleDelete(box._id)}
-                      style={{ ...btnStyle, backgroundColor: '#DC3545' }}
+                      style={{ ...btnStyle, backgroundColor: "#DC3545" }}
                     >
                       Delete
                     </button>
@@ -146,7 +150,7 @@ const Boxes: React.FC = () => {
               ))
           ) : (
             <tr>
-              <td colSpan={6} style={{ textAlign: 'center', padding: '20px' }}>
+              <td colSpan={6} style={{ textAlign: "center", padding: "20px" }}>
                 No boxes found.
               </td>
             </tr>
@@ -154,23 +158,27 @@ const Boxes: React.FC = () => {
         </tbody>
       </table>
 
-      <div style={{ marginTop: '20px' }}>
+      <div style={{ marginTop: "20px" }}>
         <button
           onClick={() => setShowForm(!showForm)}
-          style={{ ...btnStyle, backgroundColor: '#6BB7BE' }}
+          style={{ ...btnStyle, backgroundColor: "#6BB7BE" }}
         >
-          {showForm ? 'Close Form' : 'Add Data'}
+          {showForm ? "Close Form" : "Add Data"}
         </button>
       </div>
 
       {showForm && (
-        <Form onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
+        <Form onSubmit={handleSubmit} style={{ marginTop: "20px" }}>
           <Form.Group as={Row} className="mb-4" controlId="formIcon">
             <Form.Label
               className=""
               column
               sm={2}
-              style={{ fontWeight: 'bold', marginTop: '10px', display: 'block' }}
+              style={{
+                fontWeight: "bold",
+                marginTop: "10px",
+                display: "block",
+              }}
             >
               Icon
             </Form.Label>
@@ -182,7 +190,7 @@ const Boxes: React.FC = () => {
                 value={form.icon}
                 onChange={handleChange}
                 required
-                style={{ height: '45px', width: '100%' }}
+                style={{ height: "45px", width: "100%" }}
               />
             </Col>
           </Form.Group>
@@ -192,7 +200,11 @@ const Boxes: React.FC = () => {
               className=""
               column
               sm={2}
-              style={{ fontWeight: 'bold', marginTop: '10px', display: 'block' }}
+              style={{
+                fontWeight: "bold",
+                marginTop: "10px",
+                display: "block",
+              }}
             >
               Link
             </Form.Label>
@@ -204,7 +216,7 @@ const Boxes: React.FC = () => {
                 value={form.link}
                 onChange={handleChange}
                 required
-                style={{ height: '45px', width: '100%' }}
+                style={{ height: "45px", width: "100%" }}
               />
             </Col>
           </Form.Group>
@@ -214,7 +226,11 @@ const Boxes: React.FC = () => {
               className=""
               column
               sm={2}
-              style={{ fontWeight: 'bold', marginTop: '10px', display: 'block' }}
+              style={{
+                fontWeight: "bold",
+                marginTop: "10px",
+                display: "block",
+              }}
             >
               Text
             </Form.Label>
@@ -227,7 +243,7 @@ const Boxes: React.FC = () => {
                 className="w-100"
                 onChange={handleChange}
                 required
-                style={{ height: '45px', width: '100%' }}
+                style={{ height: "45px", width: "100%" }}
               />
             </Col>
           </Form.Group>
@@ -237,7 +253,11 @@ const Boxes: React.FC = () => {
               className=""
               column
               sm={2}
-              style={{ fontWeight: 'bold', marginTop: '10px', display: 'block' }}
+              style={{
+                fontWeight: "bold",
+                marginTop: "10px",
+                display: "block",
+              }}
             >
               Description
             </Form.Label>
@@ -250,26 +270,26 @@ const Boxes: React.FC = () => {
                 value={form.description}
                 onChange={handleChange}
                 required
-                style={{ width: '100%' }}
+                style={{ width: "100%" }}
               />
             </Col>
           </Form.Group>
 
-          <div style={{ textAlign: 'right' }}>
+          <div style={{ textAlign: "right" }}>
             <button
               type="submit"
               style={{
                 ...btnStyle,
-                backgroundColor: '#6BB7BE',
-                padding: '10px 20px',
-                fontWeight: 'bold',
-                border: 'none',
-                borderRadius: '6px',
-                marginTop: '10px',
-                color: '#fff',
+                backgroundColor: "#6BB7BE",
+                padding: "10px 20px",
+                fontWeight: "bold",
+                border: "none",
+                borderRadius: "6px",
+                marginTop: "10px",
+                color: "#fff",
               }}
             >
-              {isEditing ? 'Update' : 'Add'} Box
+              {isEditing ? "Update" : "Add"} Box
             </button>
           </div>
         </Form>
@@ -279,22 +299,22 @@ const Boxes: React.FC = () => {
 };
 
 const thStyle: React.CSSProperties = {
-  padding: '12px',
-  textAlign: 'left',
-  fontWeight: 'bold',
+  padding: "12px",
+  textAlign: "left",
+  fontWeight: "bold",
 };
 
 const tdStyle: React.CSSProperties = {
-  padding: '12px',
-  verticalAlign: 'top',
+  padding: "12px",
+  verticalAlign: "top",
 };
 
 const btnStyle: React.CSSProperties = {
-  padding: '8px 12px',
-  border: 'none',
-  borderRadius: '4px',
-  color: '#fff',
-  cursor: 'pointer',
+  padding: "8px 12px",
+  border: "none",
+  borderRadius: "4px",
+  color: "#fff",
+  cursor: "pointer",
 };
 
 export default Boxes;
