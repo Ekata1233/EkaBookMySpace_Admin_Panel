@@ -1,6 +1,13 @@
-import { Button, ListItemIcon, Menu, MenuItem, Stack, Typography } from '@mui/material';
-import { MouseEvent, useState } from 'react';
-import IconifyIcon from 'components/base/IconifyIcon';
+import {
+  Button,
+  ListItemIcon,
+  Menu,
+  MenuItem,
+  Stack,
+  Typography,
+} from "@mui/material";
+import { MouseEvent, useState } from "react";
+import IconifyIcon from "components/base/IconifyIcon";
 
 interface Language {
   id: number;
@@ -12,34 +19,34 @@ interface Language {
 const languages: Language[] = [
   {
     id: 0,
-    code: 'en-US',
-    lang: 'Eng (US)',
-    flag: 'circle-flags:us',
+    code: "en-US",
+    lang: "Eng (US)",
+    flag: "circle-flags:us",
   },
   {
     id: 1,
-    code: 'eng',
-    lang: 'English',
-    flag: 'circle-flags:gb-eng',
+    code: "eng",
+    lang: "English",
+    flag: "circle-flags:gb-eng",
   },
 
   {
     id: 2,
-    code: 'ban',
-    lang: 'বাংলা',
-    flag: 'circle-flags:bd',
+    code: "ban",
+    lang: "বাংলা",
+    flag: "circle-flags:bd",
   },
   {
     id: 3,
-    code: 'zh',
-    lang: '中文',
-    flag: 'circle-flags:cn',
+    code: "zh",
+    lang: "中文",
+    flag: "circle-flags:cn",
   },
   {
     id: 4,
-    code: 'tr',
-    lang: 'Türkçe',
-    flag: 'circle-flags:tr',
+    code: "tr",
+    lang: "Türkçe",
+    flag: "circle-flags:tr",
   },
 ];
 
@@ -78,17 +85,29 @@ const LanguageDropdown = () => {
     <div>
       <Button
         onClick={handleSelectedLanguage}
-        aria-controls={open ? 'language-dropdown' : undefined}
+        aria-controls={open ? "language-dropdown" : undefined}
         aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        sx={{ py: { sm: 2.25 }, px: { xs: 1, sm: 2.25 }, minWidth: { xs: 'auto' } }}
+        aria-expanded={open ? "true" : undefined}
+        sx={{
+          py: { sm: 2.25 },
+          px: { xs: 1, sm: 2.25 },
+          minWidth: { xs: "auto" },
+        }}
       >
         <IconifyIcon icon={languages[selectedIndex].flag} fontSize={24} />
-        <Stack direction="row" alignItems="center" sx={{ display: { xs: 'none', xl: 'flex' } }}>
+        <Stack
+          direction="row"
+          alignItems="center"
+          sx={{ display: { xs: "none", xl: "flex" } }}
+        >
           <Typography variant="h5" color="grey.600" width={80} mx={2}>
             {languages[selectedIndex].lang}
           </Typography>
-          <IconifyIcon icon="ph:caret-down-bold" fontSize={20} color="grey.400" />
+          <IconifyIcon
+            icon="ph:caret-down-bold"
+            fontSize={20}
+            color="grey.400"
+          />
         </Stack>
       </Button>
 
@@ -97,8 +116,8 @@ const LanguageDropdown = () => {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        transformOrigin={{ horizontal: "right", vertical: "top" }}
+        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         {languageMenuItems}
       </Menu>

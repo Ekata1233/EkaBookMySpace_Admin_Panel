@@ -1,12 +1,12 @@
-import { Theme } from '@mui/material';
-import { Components } from '@mui/material/styles/components';
-import scrollbar from 'theme/styles/scrollbar';
-import echart from 'theme/styles/echart';
+import { Theme } from "@mui/material";
+import { Components } from "@mui/material/styles/components";
+import scrollbar from "theme/styles/scrollbar";
+import echart from "theme/styles/echart";
 
-const CssBaseline: Components<Omit<Theme, 'components'>>['MuiCssBaseline'] = {
+const CssBaseline: Components<Omit<Theme, "components">>["MuiCssBaseline"] = {
   styleOverrides: (theme) => ({
     body: {
-      fontVariantLigatures: 'none',
+      fontVariantLigatures: "none",
       ...scrollbar(theme),
     },
     ...echart(),

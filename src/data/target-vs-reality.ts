@@ -5,21 +5,21 @@ export const targetVsReality = {
 
 export const salesData = [
   {
-    label: 'Reality Sales',
-    type: 'Global',
+    label: "Reality Sales",
+    type: "Global",
     value: 8.823,
-    color: 'green.main',
-    iconBgColor: 'green.light',
-    icon: 'solar:bag-5-outline',
-    iconColor: 'success.light',
+    color: "green.main",
+    iconBgColor: "green.light",
+    icon: "solar:bag-5-outline",
+    iconColor: "success.light",
   },
   {
-    label: 'Target Sales',
-    type: 'Commercial',
+    label: "Target Sales",
+    type: "Commercial",
     value: 12.122,
-    color: 'warning.main',
-    iconBgColor: 'warning.lighter',
-    icon: 'solar:ticker-star-outline',
-    iconColor: 'warning.darker',
+    color: "warning.main",
+    iconBgColor: "warning.lighter",
+    icon: "solar:ticker-star-outline",
+    iconColor: "warning.darker",
   },
 ];

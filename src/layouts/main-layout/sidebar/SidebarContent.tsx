@@ -1,15 +1,15 @@
-import { Box, List, Stack, Toolbar } from '@mui/material';
-import sitemap from 'routes/sitemap';
-import LogoHeader from './LogoHeader';
-import NavCard from './NavCard';
-import NavItem from './NavItem';
+import { Box, List, Stack, Toolbar } from "@mui/material";
+import sitemap from "routes/sitemap";
+import LogoHeader from "./LogoHeader";
+import NavCard from "./NavCard";
+import NavItem from "./NavItem";
 
 const NavItems = () => {
   return (
     <List
       sx={{
-        display: 'inline-flex',
-        flexDirection: 'column',
+        display: "inline-flex",
+        flexDirection: "column",
         gap: 3,
       }}
     >
@@ -31,7 +31,7 @@ const SidebarContent = () => {
         sx={(theme) => ({
           px: 5,
           height: `calc(100vh - ${theme.mixins.toolbar.minHeight}px)`,
-          overflowY: 'auto',
+          overflowY: "auto",
         })}
       >
         <Stack gap={17} py={4}>

@@ -1,10 +1,10 @@
-import { Divider, Paper, Stack, Typography } from '@mui/material';
-import { useMemo, useRef, useState } from 'react';
-import EChartsReactCore from 'echarts-for-react/lib/core';
-import { volumeVsService } from 'data/volume-vs-service';
-import { getTotal, numberFormat } from 'helpers/utils';
-import LegendToggleButton from 'components/common/LegendToggleButton';
-import VolumeVsServiceChart from './VolumeVsServiceChart';
+import { Divider, Paper, Stack, Typography } from "@mui/material";
+import { useMemo, useRef, useState } from "react";
+import EChartsReactCore from "echarts-for-react/lib/core";
+import { volumeVsService } from "data/volume-vs-service";
+import { getTotal, numberFormat } from "helpers/utils";
+import LegendToggleButton from "components/common/LegendToggleButton";
+import VolumeVsServiceChart from "./VolumeVsServiceChart";
 
 const VolumeVsService = () => {
   const chartRef = useRef<EChartsReactCore | null>(null);
@@ -13,7 +13,10 @@ const VolumeVsService = () => {
     services: false,
   });
 
-  const totalVolume = useMemo(() => getTotal(volumeVsService.volume), [volumeVsService.volume]);
+  const totalVolume = useMemo(
+    () => getTotal(volumeVsService.volume),
+    [volumeVsService.volume],
+  );
   const totalServices = useMemo(
     () => getTotal(volumeVsService.services),
     [volumeVsService.services],
@@ -28,7 +31,7 @@ const VolumeVsService = () => {
     if (chartRef.current) {
       const instance = chartRef.current.getEchartsInstance();
       instance.dispatchAction({
-        type: 'legendToggleSelect',
+        type: "legendToggleSelect",
         name,
       });
     }
@@ -50,8 +53,10 @@ const VolumeVsService = () => {
       <Stack
         direction="row"
         justifyContent="center"
-        divider={<Divider orientation="vertical" flexItem sx={{ height: 24 }} />}
-        sx={{ borderTop: 1, borderColor: 'grey.A100', pt: 2 }}
+        divider={
+          <Divider orientation="vertical" flexItem sx={{ height: 24 }} />
+        }
+        sx={{ borderTop: 1, borderColor: "grey.A100", pt: 2 }}
         gap={2.5}
       >
         <LegendToggleButton

@@ -1,8 +1,8 @@
-import { Box, Stack, Toolbar } from '@mui/material';
-import { PropsWithChildren, useState } from 'react';
-import VerticalNavbar from './sidebar/VerticalNavbar';
-import Topbar from './topbar/Topbar';
-import Footer from './footer/Footer';
+import { Box, Stack, Toolbar } from "@mui/material";
+import { PropsWithChildren, useState } from "react";
+import VerticalNavbar from "./sidebar/VerticalNavbar";
+import Topbar from "./topbar/Topbar";
+import Footer from "./footer/Footer";
 
 const drawerWidth = 345;
 
@@ -27,7 +27,10 @@ const MainLayout = ({ children }: PropsWithChildren) => {
 
   return (
     <Stack direction="row">
-      <Topbar drawerWidth={drawerWidth} onHandleDrawerToggle={handleDrawerToggle} />
+      <Topbar
+        drawerWidth={drawerWidth}
+        onHandleDrawerToggle={handleDrawerToggle}
+      />
 
       <VerticalNavbar
         drawerWidth={drawerWidth}
@@ -45,9 +48,9 @@ const MainLayout = ({ children }: PropsWithChildren) => {
             sm: theme.spacing(4, 5),
             lg: theme.spacing(4),
           },
-          minHeight: '100vh',
+          minHeight: "100vh",
           width: { xs: 1, sm: `calc(100% - ${drawerWidth}px)` },
-          bgcolor: 'neutral.lighter',
+          bgcolor: "neutral.lighter",
         })}
       >
         <Toolbar />

@@ -7,9 +7,9 @@ import {
   TableHead,
   TableRow,
   Typography,
-} from '@mui/material';
-import { topProducts } from 'data/top-products';
-import TopProduct from './TopProduct';
+} from "@mui/material";
+import { topProducts } from "data/top-products";
+import TopProduct from "./TopProduct";
 
 const TopProducts = () => {
   return (
@@ -18,7 +18,7 @@ const TopProducts = () => {
         Top Products
       </Typography>
 
-      <Box sx={{ overflow: 'auto' }}>
+      <Box sx={{ overflow: "auto" }}>
         <Table aria-label="top products table">
           <TableHead>
             <TableRow>

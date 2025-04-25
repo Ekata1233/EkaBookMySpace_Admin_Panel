@@ -1,7 +1,7 @@
-import { Paper, Stack, Typography } from '@mui/material';
-import TargetVsRealityChart from './TargetVsRealityChart';
-import IconifyIcon from 'components/base/IconifyIcon';
-import { salesData, targetVsReality } from 'data/target-vs-reality';
+import { Paper, Stack, Typography } from "@mui/material";
+import TargetVsRealityChart from "./TargetVsRealityChart";
+import IconifyIcon from "components/base/IconifyIcon";
+import { salesData, targetVsReality } from "data/target-vs-reality";
 
 const TargetVsReality = () => {
   return (
@@ -18,7 +18,13 @@ const TargetVsReality = () => {
             <Stack
               justifyContent="center"
               alignItems="center"
-              sx={{ width: 36, height: 36, bgcolor: item.iconBgColor, borderRadius: 2, mr: 1.25 }}
+              sx={{
+                width: 36,
+                height: 36,
+                bgcolor: item.iconBgColor,
+                borderRadius: 2,
+                mr: 1.25,
+              }}
             >
               <IconifyIcon icon={item.icon} sx={{ color: item.iconColor }} />
             </Stack>
@@ -26,17 +32,17 @@ const TargetVsReality = () => {
               <Typography
                 variant="caption"
                 sx={(theme) => ({
-                  color: 'primary.darker',
+                  color: "primary.darker",
                   fontWeight: theme.typography.h3.fontWeight,
-                  whiteSpace: 'nowrap',
+                  whiteSpace: "nowrap",
                 })}
               >
                 {item.label}
               </Typography>
               <Typography
                 sx={(theme) => ({
-                  color: 'primary.lighter',
-                  fontWeight: 'fontWeightRegular',
+                  color: "primary.lighter",
+                  fontWeight: "fontWeightRegular",
                   fontSize: theme.typography.fontSize / 1.4,
                 })}
               >
@@ -46,7 +52,7 @@ const TargetVsReality = () => {
             <Typography
               variant="subtitle2"
               sx={{
-                fontWeight: 'fontWeightMedium',
+                fontWeight: "fontWeightMedium",
                 color: item.color,
                 ml: { xs: 10, sm: 30, md: 10, xl: 5 },
               }}

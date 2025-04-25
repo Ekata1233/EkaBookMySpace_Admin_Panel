@@ -1,7 +1,7 @@
-import { Theme } from '@mui/material';
-import { Components } from '@mui/material/styles/components';
+import { Theme } from "@mui/material";
+import { Components } from "@mui/material/styles/components";
 
-const InputBase: Components<Omit<Theme, 'components'>>['MuiInputBase'] = {
+const InputBase: Components<Omit<Theme, "components">>["MuiInputBase"] = {
   styleOverrides: {
     inputTypeSearch: ({ theme }) => ({
       padding: `${theme.spacing(1.5, 3, 1.5, 1)} !important`,

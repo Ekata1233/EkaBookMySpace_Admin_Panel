@@ -1,15 +1,22 @@
-import { AppBar, IconButton, Link, Stack, Toolbar, Typography } from '@mui/material';
-import { useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
-import { rootPaths } from 'routes/paths';
-import sitemap from 'routes/sitemap';
-import Logo from 'components/icons/Logo';
-import IconifyIcon from 'components/base/IconifyIcon';
-import Search from 'components/common/Search';
-import ElevationScroll from './ElevationScroll';
-import AccountDropdown from './AccountDropdown';
-import LanguageDropdown from './LanguageDropdown';
-import Notification from './Notification';
+import {
+  AppBar,
+  IconButton,
+  Link,
+  Stack,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import { useMemo } from "react";
+import { useLocation } from "react-router-dom";
+import { rootPaths } from "routes/paths";
+import sitemap from "routes/sitemap";
+import Logo from "components/icons/Logo";
+import IconifyIcon from "components/base/IconifyIcon";
+import Search from "components/common/Search";
+import ElevationScroll from "./ElevationScroll";
+import AccountDropdown from "./AccountDropdown";
+import LanguageDropdown from "./LanguageDropdown";
+import Notification from "./Notification";
 interface TopbarProps {
   drawerWidth: number;
   onHandleDrawerToggle: () => void;
@@ -21,7 +28,7 @@ const Topbar = ({ drawerWidth, onHandleDrawerToggle }: TopbarProps) => {
   // ✅ Safe route matching with fallback title
   const pageTitle = useMemo(() => {
     const navItem = sitemap.find((item) => item.path === location.pathname);
-    return navItem?.name || 'Dashboard';
+    return navItem?.name || "Dashboard";
   }, [location]);
 
   return (
@@ -35,7 +42,7 @@ const Topbar = ({ drawerWidth, onHandleDrawerToggle }: TopbarProps) => {
       >
         <Toolbar
           sx={{
-            justifyContent: 'space-between',
+            justifyContent: "space-between",
             gap: { xs: 1, sm: 5 },
           }}
         >
@@ -44,7 +51,7 @@ const Topbar = ({ drawerWidth, onHandleDrawerToggle }: TopbarProps) => {
             direction="row"
             alignItems="center"
             columnGap={{ xs: 1, sm: 2 }}
-            sx={{ display: { lg: 'none' } }}
+            sx={{ display: { lg: "none" } }}
           >
             <Link href={rootPaths.root}>
               <IconButton color="inherit" aria-label="logo">
@@ -53,13 +60,19 @@ const Topbar = ({ drawerWidth, onHandleDrawerToggle }: TopbarProps) => {
             </Link>
 
             <IconButton color="inherit" onClick={onHandleDrawerToggle}>
-              <IconifyIcon icon="mdi:hamburger-menu" sx={{ fontSize: { xs: 24, sm: 32 } }} />
+              <IconifyIcon
+                icon="mdi:hamburger-menu"
+                sx={{ fontSize: { xs: 24, sm: 32 } }}
+              />
             </IconButton>
 
-            <IconButton aria-label="search-icon" sx={{ display: { md: 'none' } }}>
+            <IconButton
+              aria-label="search-icon"
+              sx={{ display: { md: "none" } }}
+            >
               <IconifyIcon
                 icon="gravity-ui:magnifier"
-                sx={{ color: 'primary.main', fontSize: { xs: 24, sm: 32 } }}
+                sx={{ color: "primary.main", fontSize: { xs: 24, sm: 32 } }}
               />
             </IconButton>
           </Stack>
@@ -68,7 +81,7 @@ const Topbar = ({ drawerWidth, onHandleDrawerToggle }: TopbarProps) => {
           <Typography
             variant="h1"
             color="primary.darker"
-            sx={{ display: { xs: 'none', lg: 'block' } }}
+            sx={{ display: { xs: "none", lg: "block" } }}
           >
             {pageTitle}
           </Typography>
@@ -83,7 +96,7 @@ const Topbar = ({ drawerWidth, onHandleDrawerToggle }: TopbarProps) => {
           >
             <Search
               sx={{
-                display: { xs: 'none', md: 'block' },
+                display: { xs: "none", md: "block" },
                 minWidth: 300,
                 maxWidth: 550,
               }}

@@ -1,5 +1,5 @@
-import { Button, Stack, SvgIconProps, Typography } from '@mui/material';
-import IconifyIcon from 'components/base/IconifyIcon';
+import { Button, Stack, SvgIconProps, Typography } from "@mui/material";
+import IconifyIcon from "components/base/IconifyIcon";
 
 interface Legend {
   [key: string]: boolean;
@@ -36,15 +36,26 @@ const LegendToggleButton = ({
         size="small"
         startIcon={Icon}
         onClick={() => onHandleLegendToggle(name)}
-        sx={{ opacity: legend[name] ? 0.5 : 1, '&:hover': { bgcolor: 'transparent' } }}
+        sx={{
+          opacity: legend[name] ? 0.5 : 1,
+          "&:hover": { bgcolor: "transparent" },
+        }}
         disableRipple
       >
-        <Typography variant="button" whiteSpace="nowrap" alignSelf="end" sx={{ color: 'grey.200' }}>
+        <Typography
+          variant="button"
+          whiteSpace="nowrap"
+          alignSelf="end"
+          sx={{ color: "grey.200" }}
+        >
           {name}
         </Typography>
       </Button>
       {value && (
-        <Typography variant="subtitle2" sx={{ height: 20, ml: 4, fontWeight: 'fontWeightMedium' }}>
+        <Typography
+          variant="subtitle2"
+          sx={{ height: 20, ml: 4, fontWeight: "fontWeightMedium" }}
+        >
           {value}
         </Typography>
       )}

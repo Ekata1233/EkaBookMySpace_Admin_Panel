@@ -1,8 +1,8 @@
-import { useRef } from 'react';
-import { Paper, Typography } from '@mui/material';
-import EChartsReactCore from 'echarts-for-react/lib/core';
-import SalesMappingChart from './SalesMappingChart';
-import { getSalesMappingData } from 'data/sales-mapping-data';
+import { useRef } from "react";
+import { Paper, Typography } from "@mui/material";
+import EChartsReactCore from "echarts-for-react/lib/core";
+import SalesMappingChart from "./SalesMappingChart";
+import { getSalesMappingData } from "data/sales-mapping-data";
 
 const SalesMapping = () => {
   const salesMappingChartRef = useRef<null | EChartsReactCore>(null);

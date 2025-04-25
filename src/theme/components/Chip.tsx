@@ -1,7 +1,7 @@
-import { Theme } from '@mui/material';
-import { Components } from '@mui/material/styles/components';
+import { Theme } from "@mui/material";
+import { Components } from "@mui/material/styles/components";
 
-const Chip: Components<Omit<Theme, 'components'>>['MuiChip'] = {
+const Chip: Components<Omit<Theme, "components">>["MuiChip"] = {
   styleOverrides: {
     outlined: ({ theme }) => ({
       height: theme.spacing(3),

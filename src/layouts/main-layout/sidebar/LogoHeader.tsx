@@ -1,6 +1,6 @@
-import { Link, Stack, SxProps, Typography } from '@mui/material';
+import { Link, Stack, SxProps, Typography } from "@mui/material";
 // import Logo from 'components/icons/Logo';
-import { rootPaths } from 'routes/paths';
+import { rootPaths } from "routes/paths";
 
 interface LogoHeaderProps {
   sx?: SxProps;

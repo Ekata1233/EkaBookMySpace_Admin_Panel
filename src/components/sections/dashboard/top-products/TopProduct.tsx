@@ -6,15 +6,15 @@ import {
   Typography,
   alpha,
   useTheme,
-} from '@mui/material';
-import { Product } from 'data/top-products';
+} from "@mui/material";
+import { Product } from "data/top-products";
 
 const TopProduct = ({ product }: { product: Product }) => {
   const theme = useTheme();
 
   const { id, name, color, sales } = product;
 
-  const [paletteOption, simplePaletteColorOption] = color.split('.') as [
+  const [paletteOption, simplePaletteColorOption] = color.split(".") as [
     keyof typeof theme.palette,
     keyof (typeof theme.palette)[keyof typeof theme.palette],
   ];
@@ -37,14 +37,18 @@ const TopProduct = ({ product }: { product: Product }) => {
             bgcolor: alpha(productColor, 0.2),
             borderRadius: 2,
             width: 180,
-            '& .MuiLinearProgress-bar': {
+            "& .MuiLinearProgress-bar": {
               bgcolor: color,
             },
           }}
         />
       </TableCell>
       <TableCell>
-        <Chip label={`${sales}%`} variant="outlined" sx={{ color: color, borderColor: color }} />
+        <Chip
+          label={`${sales}%`}
+          variant="outlined"
+          sx={{ color: color, borderColor: color }}
+        />
       </TableCell>
     </TableRow>
   );

@@ -1,23 +1,23 @@
-import { SxProps, useTheme } from '@mui/material';
-import { MutableRefObject, useMemo } from 'react';
-import * as echarts from 'echarts/core';
+import { SxProps, useTheme } from "@mui/material";
+import { MutableRefObject, useMemo } from "react";
+import * as echarts from "echarts/core";
 import {
   TooltipComponent,
   TooltipComponentOption,
   GeoComponent,
   GeoComponentOption,
-} from 'echarts/components';
-import { MapChart, MapSeriesOption } from 'echarts/charts';
-import { CanvasRenderer } from 'echarts/renderers';
-import { CallbackDataParams } from 'echarts/types/src/util/types.js';
-import EChartsReactCore from 'echarts-for-react/lib/core';
-import world from 'assets/json/world.json';
-import { SalesMappingDataItem } from 'data/sales-mapping-data';
-import ReactEchart from 'components/base/ReactEhart';
+} from "echarts/components";
+import { MapChart, MapSeriesOption } from "echarts/charts";
+import { CanvasRenderer } from "echarts/renderers";
+import { CallbackDataParams } from "echarts/types/src/util/types.js";
+import EChartsReactCore from "echarts-for-react/lib/core";
+import world from "assets/json/world.json";
+import { SalesMappingDataItem } from "data/sales-mapping-data";
+import ReactEchart from "components/base/ReactEhart";
 
 echarts.use([TooltipComponent, GeoComponent, MapChart, CanvasRenderer]);
 //@ts-ignore
-echarts.registerMap('world', { geoJSON: world });
+echarts.registerMap("world", { geoJSON: world });
 
 type EChartsOption = echarts.ComposeOption<
   TooltipComponentOption | GeoComponentOption | MapSeriesOption
@@ -48,7 +48,7 @@ const SalesMappingChart = ({
   const salesMappingChartOption = useMemo(() => {
     const option: EChartsOption = {
       tooltip: {
-        trigger: 'item',
+        trigger: "item",
         showDelay: 0,
         transitionDuration: 0.2,
         formatter: (params: CallbackDataParams) => {
@@ -60,8 +60,8 @@ const SalesMappingChart = ({
 
       series: [
         {
-          type: 'map',
-          map: 'world',
+          type: "map",
+          map: "world",
           data,
           roam: true,
           scaleLimit: {

@@ -1,19 +1,25 @@
-import { SxProps, useTheme } from '@mui/material';
-import { MutableRefObject, useMemo } from 'react';
-import * as echarts from 'echarts/core';
+import { SxProps, useTheme } from "@mui/material";
+import { MutableRefObject, useMemo } from "react";
+import * as echarts from "echarts/core";
 import {
   TooltipComponent,
   TooltipComponentOption,
   LegendComponent,
   GridComponent,
   GridComponentOption,
-} from 'echarts/components';
-import { BarChart, BarSeriesOption } from 'echarts/charts';
-import { CanvasRenderer } from 'echarts/renderers';
-import EChartsReactCore from 'echarts-for-react/lib/core';
-import ReactEchart from 'components/base/ReactEhart';
+} from "echarts/components";
+import { BarChart, BarSeriesOption } from "echarts/charts";
+import { CanvasRenderer } from "echarts/renderers";
+import EChartsReactCore from "echarts-for-react/lib/core";
+import ReactEchart from "components/base/ReactEhart";
 
-echarts.use([TooltipComponent, GridComponent, LegendComponent, BarChart, CanvasRenderer]);
+echarts.use([
+  TooltipComponent,
+  GridComponent,
+  LegendComponent,
+  BarChart,
+  CanvasRenderer,
+]);
 
 type EChartsOption = echarts.ComposeOption<
   TooltipComponentOption | GridComponentOption | BarSeriesOption
@@ -32,7 +38,12 @@ interface VolumeVsServiceChartProps {
   sx: SxProps;
 }
 
-const VolumeVsServiceChart = ({ chartRef, data, style, ...rest }: VolumeVsServiceChartProps) => {
+const VolumeVsServiceChart = ({
+  chartRef,
+  data,
+  style,
+  ...rest
+}: VolumeVsServiceChartProps) => {
   const theme = useTheme();
 
   const volumeVsServiceChartOption = useMemo(() => {
@@ -48,12 +59,12 @@ const VolumeVsServiceChart = ({ chartRef, data, style, ...rest }: VolumeVsServic
 
       xAxis: {
         show: false,
-        data: ['', '', '', '', '', '', ''],
+        data: ["", "", "", "", "", "", ""],
         boundaryGap: false,
       },
 
       yAxis: {
-        type: 'value',
+        type: "value",
         show: false,
       },
 
@@ -67,25 +78,25 @@ const VolumeVsServiceChart = ({ chartRef, data, style, ...rest }: VolumeVsServic
 
       series: [
         {
-          name: 'Services',
-          type: 'bar',
+          name: "Services",
+          type: "bar",
           data: data.services,
           itemStyle: {
             borderRadius: 2,
           },
 
-          stack: 'total',
-          barWidth: '20%',
+          stack: "total",
+          barWidth: "20%",
         },
         {
-          name: 'Volume',
-          type: 'bar',
+          name: "Volume",
+          type: "bar",
           data: data.volume,
           itemStyle: {
             borderRadius: 2,
           },
-          stack: 'total',
-          barWidth: '20%',
+          stack: "total",
+          barWidth: "20%",
         },
       ],
     };

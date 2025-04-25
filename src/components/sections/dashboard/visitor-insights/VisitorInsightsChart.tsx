@@ -1,6 +1,6 @@
-import { useTheme } from '@mui/material';
-import { MutableRefObject, useMemo } from 'react';
-import * as echarts from 'echarts/core';
+import { useTheme } from "@mui/material";
+import { MutableRefObject, useMemo } from "react";
+import * as echarts from "echarts/core";
 import {
   TooltipComponent,
   TooltipComponentOption,
@@ -8,12 +8,12 @@ import {
   GridComponentOption,
   LegendComponent,
   LegendComponentOption,
-} from 'echarts/components';
-import { LineChart, LineSeriesOption } from 'echarts/charts';
-import { UniversalTransition } from 'echarts/features';
-import { CanvasRenderer } from 'echarts/renderers';
-import EChartsReactCore from 'echarts-for-react/lib/core';
-import ReactEchart from 'components/base/ReactEhart';
+} from "echarts/components";
+import { LineChart, LineSeriesOption } from "echarts/charts";
+import { UniversalTransition } from "echarts/features";
+import { CanvasRenderer } from "echarts/renderers";
+import EChartsReactCore from "echarts-for-react/lib/core";
+import ReactEchart from "components/base/ReactEhart";
 
 echarts.use([
   TooltipComponent,
@@ -25,15 +25,18 @@ echarts.use([
 ]);
 
 type EChartsOption = echarts.ComposeOption<
-  TooltipComponentOption | GridComponentOption | LegendComponentOption | LineSeriesOption
+  | TooltipComponentOption
+  | GridComponentOption
+  | LegendComponentOption
+  | LineSeriesOption
 >;
 
 interface VisitorInsightsChartProps {
   chartRef: MutableRefObject<EChartsReactCore | null>;
   data: {
-    'loyal customers': number[];
-    'new customers': number[];
-    'unique customers': number[];
+    "loyal customers": number[];
+    "new customers": number[];
+    "unique customers": number[];
   };
   style?: {
     height: number;
@@ -41,7 +44,11 @@ interface VisitorInsightsChartProps {
   };
 }
 
-const VisitorInsightsChart = ({ chartRef, data, style }: VisitorInsightsChartProps) => {
+const VisitorInsightsChart = ({
+  chartRef,
+  data,
+  style,
+}: VisitorInsightsChartProps) => {
   const theme = useTheme();
 
   const visitorInsightsChartOption = useMemo(() => {
@@ -53,7 +60,7 @@ const VisitorInsightsChart = ({ chartRef, data, style }: VisitorInsightsChartPro
       ],
 
       tooltip: {
-        trigger: 'axis',
+        trigger: "axis",
         confine: true,
         axisPointer: {
           lineStyle: {
@@ -67,8 +74,21 @@ const VisitorInsightsChart = ({ chartRef, data, style }: VisitorInsightsChartPro
       },
 
       xAxis: {
-        type: 'category',
-        data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        type: "category",
+        data: [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ],
         axisTick: {
           show: false,
         },
@@ -83,7 +103,7 @@ const VisitorInsightsChart = ({ chartRef, data, style }: VisitorInsightsChartPro
       },
 
       yAxis: {
-        type: 'value',
+        type: "value",
         axisLabel: {
           fontSize: theme.typography.caption.fontSize,
           color: theme.palette.grey.A200,
@@ -105,11 +125,11 @@ const VisitorInsightsChart = ({ chartRef, data, style }: VisitorInsightsChartPro
 
       series: [
         {
-          name: 'Loyal Customers',
-          type: 'line',
-          data: data['loyal customers'],
+          name: "Loyal Customers",
+          type: "line",
+          data: data["loyal customers"],
           smooth: true,
-          symbol: 'circle',
+          symbol: "circle",
           showSymbol: false,
           symbolSize: 14,
 
@@ -118,11 +138,11 @@ const VisitorInsightsChart = ({ chartRef, data, style }: VisitorInsightsChartPro
           },
         },
         {
-          name: 'New Customers',
-          type: 'line',
-          data: data['new customers'],
+          name: "New Customers",
+          type: "line",
+          data: data["new customers"],
           smooth: true,
-          symbol: 'circle',
+          symbol: "circle",
           showSymbol: false,
           symbolSize: 14,
           lineStyle: {
@@ -130,11 +150,11 @@ const VisitorInsightsChart = ({ chartRef, data, style }: VisitorInsightsChartPro
           },
         },
         {
-          name: 'Unique Customers',
-          type: 'line',
-          data: data['unique customers'],
+          name: "Unique Customers",
+          type: "line",
+          data: data["unique customers"],
           smooth: true,
-          symbol: 'circle',
+          symbol: "circle",
           showSymbol: false,
           symbolSize: 14,
           lineStyle: {

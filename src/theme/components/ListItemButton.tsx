@@ -1,18 +1,20 @@
-import { Components, Theme } from '@mui/material';
+import { Components, Theme } from "@mui/material";
 
-const ListItemButton: Components<Omit<Theme, 'components'>>['MuiListItemButton'] = {
+const ListItemButton: Components<
+  Omit<Theme, "components">
+>["MuiListItemButton"] = {
   styleOverrides: {
     gutters: ({ theme }) => ({
       borderRadius: theme.shape.borderRadius * 4,
-      '&:hover': {
+      "&:hover": {
         backgroundColor: theme.palette.action.hover,
         color: theme.palette.common.white,
       },
 
-      '&.Mui-selected': {
+      "&.Mui-selected": {
         backgroundColor: theme.palette.action.selected,
         color: theme.palette.common.white,
-        '&:hover': {
+        "&:hover": {
           backgroundColor: theme.palette.action.hover,
         },
       },

@@ -1,15 +1,15 @@
-import { useTheme } from '@mui/material';
-import { useMemo } from 'react';
-import * as echarts from 'echarts/core';
+import { useTheme } from "@mui/material";
+import { useMemo } from "react";
+import * as echarts from "echarts/core";
 import {
   TooltipComponent,
   TooltipComponentOption,
   GridComponent,
   GridComponentOption,
-} from 'echarts/components';
-import { BarChart, BarSeriesOption } from 'echarts/charts';
-import { CanvasRenderer } from 'echarts/renderers';
-import ReactEchart from 'components/base/ReactEhart';
+} from "echarts/components";
+import { BarChart, BarSeriesOption } from "echarts/charts";
+import { CanvasRenderer } from "echarts/renderers";
+import ReactEchart from "components/base/ReactEhart";
 
 echarts.use([TooltipComponent, GridComponent, BarChart, CanvasRenderer]);
 
@@ -40,7 +40,7 @@ const TargetVsRealityChart = ({ style, data }: TargetVsRealityChartProps) => {
       },
 
       xAxis: {
-        data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July'],
+        data: ["Jan", "Feb", "Mar", "Apr", "May", "June", "July"],
         boundaryGap: true,
         axisTick: {
           show: false,
@@ -56,7 +56,7 @@ const TargetVsRealityChart = ({ style, data }: TargetVsRealityChartProps) => {
 
       yAxis: {
         show: false,
-        type: 'value',
+        type: "value",
       },
 
       grid: {
@@ -69,27 +69,33 @@ const TargetVsRealityChart = ({ style, data }: TargetVsRealityChartProps) => {
 
       series: [
         {
-          type: 'bar',
+          type: "bar",
           data: data.reality,
           itemStyle: {
             borderRadius: 5,
           },
-          barCategoryGap: '30%',
+          barCategoryGap: "30%",
         },
         {
-          type: 'bar',
+          type: "bar",
           data: data.target,
           itemStyle: {
             borderRadius: 5,
           },
-          barCategoryGap: '30%',
+          barCategoryGap: "30%",
         },
       ],
     };
     return option;
   }, [theme, data]);
 
-  return <ReactEchart echarts={echarts} option={targetVsRealityChartOption} style={style} />;
+  return (
+    <ReactEchart
+      echarts={echarts}
+      option={targetVsRealityChartOption}
+      style={style}
+    />
+  );
 };
 
 export default TargetVsRealityChart;

@@ -1,12 +1,12 @@
-import { Components, Theme } from '@mui/material';
+import { Components, Theme } from "@mui/material";
 
-const Button: Components<Omit<Theme, 'components'>>['MuiButton'] = {
+const Button: Components<Omit<Theme, "components">>["MuiButton"] = {
   defaultProps: {
     disableElevation: true,
   },
   styleOverrides: {
     root: ({ theme }) => ({
-      textTransform: 'none',
+      textTransform: "none",
       borderRadius: theme.shape.borderRadius * 2,
       fontSize: theme.typography.htmlFontSize, // 16px
       padding: theme.spacing(1, 2), // 8px, 16px
@@ -33,12 +33,12 @@ const Button: Components<Omit<Theme, 'components'>>['MuiButton'] = {
     }),
 
     startIcon: {
-      '& > *:first-of-type': {
+      "& > *:first-of-type": {
         fontSize: 16,
       },
     },
     endIcon: {
-      '& > *:first-of-type': {
+      "& > *:first-of-type": {
         fontSize: 14,
       },
     },

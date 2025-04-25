@@ -1,7 +1,16 @@
-import { PaletteColorOptions, PaletteOptions } from '@mui/material/styles';
-import { indigo, grey, orange, red, green, purple, blue, yellow } from './colors';
+import { PaletteColorOptions, PaletteOptions } from "@mui/material/styles";
+import {
+  indigo,
+  grey,
+  orange,
+  red,
+  green,
+  purple,
+  blue,
+  yellow,
+} from "./colors";
 
-declare module '@mui/material/styles' {
+declare module "@mui/material/styles" {
   interface Palette {
     neutral: PaletteColor;
     green: PaletteColor;
@@ -45,7 +54,7 @@ const palette: PaletteOptions = {
     main: grey[500],
     dark: grey[700],
     darker: grey[900],
-    contrastText: '#fff',
+    contrastText: "#fff",
   },
 
   primary: {

@@ -1,17 +1,17 @@
-import { Paper, Stack, Typography } from '@mui/material';
-import { useRef, useState } from 'react';
-import EChartsReactCore from 'echarts-for-react/lib/core';
-import { visitorInsightsData } from 'data/visitor-insights-data';
-import LegendToggleButton from 'components/common/LegendToggleButton';
-import VisitorInsightsChart from './VisitorInsightsChart';
+import { Paper, Stack, Typography } from "@mui/material";
+import { useRef, useState } from "react";
+import EChartsReactCore from "echarts-for-react/lib/core";
+import { visitorInsightsData } from "data/visitor-insights-data";
+import LegendToggleButton from "components/common/LegendToggleButton";
+import VisitorInsightsChart from "./VisitorInsightsChart";
 
 const VisitorInsights = () => {
   const chartRef = useRef<EChartsReactCore | null>(null);
 
   const [legend, setLegend] = useState({
-    'loyal customers': false,
-    'new customers': false,
-    'unique customers': false,
+    "loyal customers": false,
+    "new customers": false,
+    "unique customers": false,
   });
 
   const handleLegendToggle = (name: keyof typeof legend) => {
@@ -23,7 +23,7 @@ const VisitorInsights = () => {
     if (chartRef.current) {
       const instance = chartRef.current.getEchartsInstance();
       instance.dispatchAction({
-        type: 'legendToggleSelect',
+        type: "legendToggleSelect",
         name: name,
       });
     }
@@ -42,7 +42,7 @@ const VisitorInsights = () => {
       />
 
       <Stack
-        direction={{ xs: 'column', sm: 'row' }}
+        direction={{ xs: "column", sm: "row" }}
         justifyContent="center"
         alignItems="flex-start"
         mt={4}

@@ -1,5 +1,5 @@
-import { alpha, useTheme } from '@mui/material';
-import * as echarts from 'echarts/core';
+import { alpha, useTheme } from "@mui/material";
+import * as echarts from "echarts/core";
 import {
   TooltipComponent,
   TooltipComponentOption,
@@ -7,13 +7,13 @@ import {
   GridComponentOption,
   LegendComponent,
   LegendComponentOption,
-} from 'echarts/components';
-import { LineChart, LineSeriesOption } from 'echarts/charts';
-import { UniversalTransition } from 'echarts/features';
-import { CanvasRenderer } from 'echarts/renderers';
-import { MutableRefObject, useMemo } from 'react';
-import EChartsReactCore from 'echarts-for-react/lib/core';
-import ReactEchart from 'components/base/ReactEhart';
+} from "echarts/components";
+import { LineChart, LineSeriesOption } from "echarts/charts";
+import { UniversalTransition } from "echarts/features";
+import { CanvasRenderer } from "echarts/renderers";
+import { MutableRefObject, useMemo } from "react";
+import EChartsReactCore from "echarts-for-react/lib/core";
+import ReactEchart from "components/base/ReactEhart";
 
 echarts.use([
   TooltipComponent,
@@ -25,14 +25,17 @@ echarts.use([
 ]);
 
 type EChartsOption = echarts.ComposeOption<
-  TooltipComponentOption | GridComponentOption | LegendComponentOption | LineSeriesOption
+  | TooltipComponentOption
+  | GridComponentOption
+  | LegendComponentOption
+  | LineSeriesOption
 >;
 
 interface CustomerSatisfactionChart {
   chartRef: MutableRefObject<EChartsReactCore | null>;
   data: {
-    'last month': number[];
-    'this month': number[];
+    "last month": number[];
+    "this month": number[];
   };
   style?: {
     height?: number;
@@ -40,14 +43,18 @@ interface CustomerSatisfactionChart {
   };
 }
 
-const CustomerSatisfactionChart = ({ chartRef, data, style }: CustomerSatisfactionChart) => {
+const CustomerSatisfactionChart = ({
+  chartRef,
+  data,
+  style,
+}: CustomerSatisfactionChart) => {
   const theme = useTheme();
 
   const customerSatisfactionChartOption = useMemo(() => {
     const option: EChartsOption = {
       color: [theme.palette.info.main, theme.palette.success.dark],
       tooltip: {
-        trigger: 'item',
+        trigger: "item",
         show: true,
       },
 
@@ -65,23 +72,23 @@ const CustomerSatisfactionChart = ({ chartRef, data, style }: CustomerSatisfacti
 
       xAxis: [
         {
-          type: 'category',
+          type: "category",
           boundaryGap: false,
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
           show: false,
         },
       ],
       yAxis: [
         {
-          type: 'value',
+          type: "value",
           show: false,
         },
       ],
       series: [
         {
-          name: 'Last Month',
-          type: 'line',
-          stack: 'Customer Satisfaction',
+          name: "Last Month",
+          type: "line",
+          stack: "Customer Satisfaction",
           smooth: true,
           areaStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
@@ -97,16 +104,16 @@ const CustomerSatisfactionChart = ({ chartRef, data, style }: CustomerSatisfacti
           },
 
           emphasis: {
-            focus: 'series',
+            focus: "series",
           },
-          data: data['last month'],
-          symbol: 'circle',
+          data: data["last month"],
+          symbol: "circle",
           symbolSize: 8,
         },
         {
-          name: 'This Month',
-          type: 'line',
-          stack: 'Customer Satisfaction',
+          name: "This Month",
+          type: "line",
+          stack: "Customer Satisfaction",
           smooth: true,
           areaStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
@@ -121,10 +128,10 @@ const CustomerSatisfactionChart = ({ chartRef, data, style }: CustomerSatisfacti
             ]),
           },
           emphasis: {
-            focus: 'series',
+            focus: "series",
           },
-          data: data['this month'],
-          symbol: 'circle',
+          data: data["this month"],
+          symbol: "circle",
           symbolSize: 8,
         },
       ],

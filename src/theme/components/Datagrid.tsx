@@ -1,8 +1,8 @@
-import { Theme } from '@mui/material';
-import { Components } from '@mui/material/styles/components';
-import type {} from '@mui/x-data-grid/themeAugmentation';
+import { Theme } from "@mui/material";
+import { Components } from "@mui/material/styles/components";
+import type {} from "@mui/x-data-grid/themeAugmentation";
 
-const DataGrid: Components<Omit<Theme, 'components'>>['MuiDataGrid'] = {
+const DataGrid: Components<Omit<Theme, "components">>["MuiDataGrid"] = {
   defaultProps: {
     disableColumnMenu: true,
     disableRowSelectionOnClick: true,
@@ -16,13 +16,13 @@ const DataGrid: Components<Omit<Theme, 'components'>>['MuiDataGrid'] = {
     },
 
     row: ({ theme }) => ({
-      '&:hover': {
+      "&:hover": {
         backgroundColor: theme.palette.neutral.lighter,
       },
     }),
 
     columnHeader: {
-      '&:focus-within': { outline: 'none' },
+      "&:focus-within": { outline: "none" },
     },
 
     columnHeaderTitle: ({ theme }) => ({
@@ -36,11 +36,11 @@ const DataGrid: Components<Omit<Theme, 'components'>>['MuiDataGrid'] = {
     cell: ({ theme }) => ({
       fontFamily: theme.typography.body1.fontFamily,
       fontSize: theme.typography.fontSize,
-      '&:focus-within': { outline: 'none' },
+      "&:focus-within": { outline: "none" },
     }),
 
     columnSeparator: {
-      display: 'none',
+      display: "none",
     },
 
     sortIcon: ({ theme }) => ({

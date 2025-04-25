@@ -1,5 +1,5 @@
-import { Box, SxProps } from '@mui/material';
-import { ImgHTMLAttributes } from 'react';
+import { Box, SxProps } from "@mui/material";
+import { ImgHTMLAttributes } from "react";
 
 interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   sx?: SxProps;

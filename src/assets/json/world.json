@@ -1,6 +1,9 @@
 {
   "type": "FeatureCollection",
-  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+  "crs": {
+    "type": "name",
+    "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" }
+  },
   "features": [
     {
       "geometry": {
@@ -10150,7 +10153,11 @@
           ]
         ]
       },
-      "properties": { "name": "Denmark", "childNum": 10, "cp": [10.2768332, 56.1773879] }
+      "properties": {
+        "name": "Denmark",
+        "childNum": 10,
+        "cp": [10.2768332, 56.1773879]
+      }
     },
     {
       "geometry": {
@@ -10887,7 +10894,11 @@
           ]
         ]
       },
-      "properties": { "name": "Spain", "childNum": 12, "cp": [-2.9366964, 40.3438963] }
+      "properties": {
+        "name": "Spain",
+        "childNum": 12,
+        "cp": [-2.9366964, 40.3438963]
+      }
     },
     {
       "geometry": {
@@ -11615,7 +11626,11 @@
           ]
         ]
       },
-      "properties": { "name": "France", "childNum": 10, "cp": [2.8719426, 46.8222422] }
+      "properties": {
+        "name": "France",
+        "childNum": 10,
+        "cp": [2.8719426, 46.8222422]
+      }
     },
     {
       "geometry": {
@@ -12036,7 +12051,11 @@
           ]
         ]
       },
-      "properties": { "name": "United Kingdom", "childNum": 14, "cp": [-2.5830348, 54.4598409] }
+      "properties": {
+        "name": "United Kingdom",
+        "childNum": 14,
+        "cp": [-2.5830348, 54.4598409]
+      }
     },
     {
       "geometry": {
@@ -21269,7 +21288,11 @@
           ]
         ]
       },
-      "properties": { "name": "Netherlands", "childNum": 6, "cp": [5.0752777, 52.358465] }
+      "properties": {
+        "name": "Netherlands",
+        "childNum": 6,
+        "cp": [5.0752777, 52.358465]
+      }
     },
     {
       "geometry": {
@@ -23894,7 +23917,11 @@
           ]
         ]
       },
-      "properties": { "name": "Portugal", "childNum": 7, "cp": [-8.7440694, 39.9251454] }
+      "properties": {
+        "name": "Portugal",
+        "childNum": 7,
+        "cp": [-8.7440694, 39.9251454]
+      }
     },
     {
       "geometry": {

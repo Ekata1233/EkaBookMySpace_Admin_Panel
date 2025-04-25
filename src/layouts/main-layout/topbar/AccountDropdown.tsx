@@ -7,10 +7,10 @@ import {
   MenuItem,
   Stack,
   Typography,
-} from '@mui/material';
-import { MouseEvent, useState } from 'react';
-import Profile from 'assets/Profile.webp';
-import IconifyIcon from 'components/base/IconifyIcon';
+} from "@mui/material";
+import { MouseEvent, useState } from "react";
+import Profile from "assets/Profile.webp";
+import IconifyIcon from "components/base/IconifyIcon";
 
 interface MenuItem {
   id: number;
@@ -21,18 +21,18 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     id: 0,
-    label: 'Profile',
-    icon: 'material-symbols:person',
+    label: "Profile",
+    icon: "material-symbols:person",
   },
   {
     id: 1,
-    label: 'My Account',
-    icon: 'material-symbols:account-box-sharp',
+    label: "My Account",
+    icon: "material-symbols:account-box-sharp",
   },
   {
     id: 2,
-    label: 'Logout',
-    icon: 'uiw:logout',
+    label: "Logout",
+    icon: "uiw:logout",
   },
 ];
 
@@ -53,13 +53,13 @@ const AccountDropdown = () => {
       key={menuItem.id}
       onClick={handleClose}
       sx={{
-        '&:hover .account-menu-icon': { color: 'common.white' },
+        "&:hover .account-menu-icon": { color: "common.white" },
       }}
     >
       <ListItemIcon>
         <IconifyIcon
           icon={menuItem.icon}
-          sx={{ color: 'primary.main' }}
+          sx={{ color: "primary.main" }}
           className="account-menu-icon"
         />
       </ListItemIcon>
@@ -71,10 +71,10 @@ const AccountDropdown = () => {
     <>
       <Button
         onClick={handleClick}
-        aria-controls={open ? 'account-menu' : undefined}
+        aria-controls={open ? "account-menu" : undefined}
         aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        sx={{ px: { xs: 1, sm: 2 }, minWidth: 'auto' }}
+        aria-expanded={open ? "true" : undefined}
+        sx={{ px: { xs: 1, sm: 2 }, minWidth: "auto" }}
       >
         <Avatar
           sx={{
@@ -86,14 +86,27 @@ const AccountDropdown = () => {
           alt="User Profile"
           src={Profile}
         />
-        <Box sx={{ display: { xs: 'none', xl: 'block' } }}>
+        <Box sx={{ display: { xs: "none", xl: "block" } }}>
           <Stack direction="row" alignItems="center" columnGap={6}>
-            <Typography variant="h6" component="p" color="primary.darker" gutterBottom>
+            <Typography
+              variant="h6"
+              component="p"
+              color="primary.darker"
+              gutterBottom
+            >
               Musfiq
             </Typography>
-            <IconifyIcon icon="ph:caret-down-bold" fontSize={16} color="primary.darker" />
+            <IconifyIcon
+              icon="ph:caret-down-bold"
+              fontSize={16}
+              color="primary.darker"
+            />
           </Stack>
-          <Typography variant="subtitle2" textAlign="left" color="primary.lighter">
+          <Typography
+            variant="subtitle2"
+            textAlign="left"
+            color="primary.lighter"
+          >
             Admin
           </Typography>
         </Box>
@@ -105,8 +118,8 @@ const AccountDropdown = () => {
         open={open}
         onClose={handleClose}
         onClick={handleClose}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        transformOrigin={{ horizontal: "right", vertical: "top" }}
+        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         {accountMenuItems}
       </Menu>

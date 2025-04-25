@@ -1,7 +1,7 @@
-import { SxProps, TextField } from '@mui/material';
-import { GridApiCommunity } from '@mui/x-data-grid/internals';
-import { ChangeEvent, MutableRefObject } from 'react';
-import IconifyIcon from 'components/base/IconifyIcon';
+import { SxProps, TextField } from "@mui/material";
+import { GridApiCommunity } from "@mui/x-data-grid/internals";
+import { ChangeEvent, MutableRefObject } from "react";
+import IconifyIcon from "components/base/IconifyIcon";
 
 interface SearchFilterProps {
   apiRef: MutableRefObject<GridApiCommunity>;
@@ -21,7 +21,7 @@ const SearchFilter = ({ apiRef, ...props }: SearchFilterProps) => {
         startAdornment: (
           <IconifyIcon
             icon="gravity-ui:magnifier"
-            sx={{ color: 'primary.main', fontSize: 32, mr: 1 }}
+            sx={{ color: "primary.main", fontSize: 32, mr: 1 }}
           />
         ),
       }}

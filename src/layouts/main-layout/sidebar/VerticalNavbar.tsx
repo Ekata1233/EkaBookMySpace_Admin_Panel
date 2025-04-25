@@ -1,6 +1,6 @@
-import { Box, Drawer, DrawerProps } from '@mui/material';
-import { TransitionEventHandler } from 'react';
-import SidebarContent from './SidebarContent';
+import { Box, Drawer, DrawerProps } from "@mui/material";
+import { TransitionEventHandler } from "react";
+import SidebarContent from "./SidebarContent";
 
 interface VerticalNavbarProps extends DrawerProps {
   drawerWidth: number;
@@ -30,8 +30,8 @@ const VerticalNavbar = ({
           keepMounted: true, // Better open performance on mobile.
         }}
         sx={{
-          display: { xs: 'block', lg: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          display: { xs: "block", lg: "none" },
+          "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
         }}
       >
         <SidebarContent />
@@ -40,8 +40,8 @@ const VerticalNavbar = ({
       <Drawer
         variant="permanent"
         sx={{
-          display: { xs: 'none', lg: 'block' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          display: { xs: "none", lg: "block" },
+          "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
         }}
         open
       >

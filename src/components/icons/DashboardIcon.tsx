@@ -1,11 +1,11 @@
-import { SvgIcon, SvgIconProps } from '@mui/material';
+import { SvgIcon, SvgIconProps } from "@mui/material";
 
 const DashboardIcon = (props: SvgIconProps) => {
   return (
     <SvgIcon width="32" height="32" viewBox="0 0 32 32" fill="none" {...props}>
       <mask
         id="mask0_8121_67"
-        style={{ maskType: 'luminance' }}
+        style={{ maskType: "luminance" }}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"

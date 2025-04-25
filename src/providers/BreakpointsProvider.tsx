@@ -1,6 +1,12 @@
-import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
-import { Breakpoint, Theme } from '@mui/material';
-import { useMediaQuery } from '@mui/material';
+import {
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { Breakpoint, Theme } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 
 interface BreakpointContextInterface {
   currentBreakpoint: Breakpoint;
@@ -10,10 +16,12 @@ interface BreakpointContextInterface {
   between: (start: Breakpoint | number, end: Breakpoint | number) => boolean;
 }
 
-export const BreakpointContext = createContext({} as BreakpointContextInterface);
+export const BreakpointContext = createContext(
+  {} as BreakpointContextInterface,
+);
 
 const BreakpointsProvider = ({ children }: PropsWithChildren) => {
-  const [currentBreakpoint, setCurrentBreakpoint] = useState<Breakpoint>('xs');
+  const [currentBreakpoint, setCurrentBreakpoint] = useState<Breakpoint>("xs");
   const up = (key: Breakpoint | number) =>
     useMediaQuery<Theme>((theme) => theme.breakpoints.up(key));
 
@@ -26,32 +34,34 @@ const BreakpointsProvider = ({ children }: PropsWithChildren) => {
   const between = (start: Breakpoint | number, end: Breakpoint | number) =>
     useMediaQuery<Theme>((theme) => theme.breakpoints.between(start, end));
 
-  const isXs = between('xs', 'sm');
-  const isSm = between('sm', 'md');
-  const isMd = between('md', 'lg');
-  const isLg = between('lg', 'xl');
-  const isXl = up('xl');
+  const isXs = between("xs", "sm");
+  const isSm = between("sm", "md");
+  const isMd = between("md", "lg");
+  const isLg = between("lg", "xl");
+  const isXl = up("xl");
 
   useEffect(() => {
     if (isXs) {
-      setCurrentBreakpoint('xs');
+      setCurrentBreakpoint("xs");
     }
     if (isSm) {
-      setCurrentBreakpoint('sm');
+      setCurrentBreakpoint("sm");
     }
     if (isMd) {
-      setCurrentBreakpoint('md');
+      setCurrentBreakpoint("md");
     }
     if (isLg) {
-      setCurrentBreakpoint('lg');
+      setCurrentBreakpoint("lg");
     }
     if (isXl) {
-      setCurrentBreakpoint('xl');
+      setCurrentBreakpoint("xl");
     }
   }, [isXs, isSm, isMd, isLg, isXl]);
 
   return (
-    <BreakpointContext.Provider value={{ currentBreakpoint, up, down, only, between }}>
+    <BreakpointContext.Provider
+      value={{ currentBreakpoint, up, down, only, between }}
+    >
       {children}
     </BreakpointContext.Provider>
   );

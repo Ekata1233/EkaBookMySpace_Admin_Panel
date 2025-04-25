@@ -1,6 +1,6 @@
-import { Paper, Typography } from '@mui/material';
-import TotalRevenueChart from './TotalRevenueChart';
-import { totalRevenue } from 'data/total-revenue';
+import { Paper, Typography } from "@mui/material";
+import TotalRevenueChart from "./TotalRevenueChart";
+import { totalRevenue } from "data/total-revenue";
 
 const TotalRevenue = () => {
   return (

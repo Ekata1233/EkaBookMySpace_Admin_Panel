@@ -1,7 +1,7 @@
-import { Theme } from '@mui/material';
-import { Components } from '@mui/material/styles/components';
+import { Theme } from "@mui/material";
+import { Components } from "@mui/material/styles/components";
 
-const Paper: Components<Omit<Theme, 'components'>>['MuiPaper'] = {
+const Paper: Components<Omit<Theme, "components">>["MuiPaper"] = {
   defaultProps: {
     elevation: 1,
   },

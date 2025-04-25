@@ -1,7 +1,7 @@
 export const rootPaths = {
-  root: '/',
-  pagesRoot: 'pages',
-  authRoot: 'vendor',
+  root: "/",
+  pagesRoot: "pages",
+  authRoot: "vendor",
 };
 
 export default {
@@ -15,4 +15,8 @@ export default {
   exploreoffice: `/${rootPaths.authRoot}/exploreoffice`,
   officespacelist: `/${rootPaths.authRoot}/office-space-list`,
   workbusiness: `/${rootPaths.authRoot}/workbusiness`,
+  vendorpayoutmanagement: `/${rootPaths.authRoot}/vendorpayoutmanagement`,
+  vendorearningsummary: `/${rootPaths.authRoot}/vendorearningsummary`,
+  paymentmanagement: `/${rootPaths.authRoot}/paymentmanagement`,
+  dashboardoverview: `/${rootPaths.authRoot}/dashboardoverview`,
 };

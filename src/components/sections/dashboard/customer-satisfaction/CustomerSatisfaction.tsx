@@ -1,26 +1,26 @@
-import { Divider, Paper, Stack, Typography } from '@mui/material';
-import { useMemo, useRef, useState } from 'react';
-import EChartsReactCore from 'echarts-for-react/lib/core';
-import { customerSatisfaction } from 'data/customer-satisfaction';
-import { currencyFormat, getTotal } from 'helpers/utils';
-import Pin from 'components/icons/Pin';
-import LegendToggleButton from 'components/common/LegendToggleButton';
-import CustomerSatisfactionChart from './CustomerSatisfactionChart';
+import { Divider, Paper, Stack, Typography } from "@mui/material";
+import { useMemo, useRef, useState } from "react";
+import EChartsReactCore from "echarts-for-react/lib/core";
+import { customerSatisfaction } from "data/customer-satisfaction";
+import { currencyFormat, getTotal } from "helpers/utils";
+import Pin from "components/icons/Pin";
+import LegendToggleButton from "components/common/LegendToggleButton";
+import CustomerSatisfactionChart from "./CustomerSatisfactionChart";
 
 const CustomerSatisfaction = () => {
   const chartRef = useRef<EChartsReactCore | null>(null);
   const [legend, setLegend] = useState({
-    'last month': false,
-    'this month': false,
+    "last month": false,
+    "this month": false,
   });
 
   const totalLastMonthSatisfaction = useMemo(
-    () => getTotal(customerSatisfaction['last month']),
-    [customerSatisfaction['last month']],
+    () => getTotal(customerSatisfaction["last month"]),
+    [customerSatisfaction["last month"]],
   );
   const totalThisMonthSatisfaction = useMemo(
-    () => getTotal(customerSatisfaction['this month']),
-    [customerSatisfaction['this month']],
+    () => getTotal(customerSatisfaction["this month"]),
+    [customerSatisfaction["this month"]],
   );
 
   const handleLegendToggle = (name: keyof typeof legend) => {
@@ -32,7 +32,7 @@ const CustomerSatisfaction = () => {
     if (chartRef.current) {
       const instance = chartRef.current.getEchartsInstance();
       instance.dispatchAction({
-        type: 'legendToggleSelect',
+        type: "legendToggleSelect",
         name: name,
       });
     }
@@ -53,8 +53,10 @@ const CustomerSatisfaction = () => {
       <Stack
         direction="row"
         justifyContent="center"
-        divider={<Divider orientation="vertical" flexItem sx={{ height: 24 }} />}
-        sx={{ borderTop: 1, borderColor: 'grey.A100', pt: 2 }}
+        divider={
+          <Divider orientation="vertical" flexItem sx={{ height: 24 }} />
+        }
+        sx={{ borderTop: 1, borderColor: "grey.A100", pt: 2 }}
         gap={2}
       >
         <LegendToggleButton

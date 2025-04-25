@@ -1,5 +1,5 @@
-import { InputAdornment, SxProps, TextField } from '@mui/material';
-import IconifyIcon from 'components/base/IconifyIcon';
+import { InputAdornment, SxProps, TextField } from "@mui/material";
+import IconifyIcon from "components/base/IconifyIcon";
 
 interface SearchProps {
   sx?: SxProps;
@@ -14,7 +14,7 @@ const Search = (props: SearchProps) => {
           <InputAdornment position="start">
             <IconifyIcon
               icon="gravity-ui:magnifier"
-              sx={{ color: 'primary.main', fontSize: 32, mr: 1 }}
+              sx={{ color: "primary.main", fontSize: 32, mr: 1 }}
             />
           </InputAdornment>
         ),
