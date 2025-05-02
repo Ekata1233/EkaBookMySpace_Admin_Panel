@@ -141,13 +141,6 @@ const sitemap: MenuItem[] = [
     icon: 'ph:shopping-cart-light',
   },
   {
-    id: 3,
-    name: 'Booking',
-    path: paths.booking,
-    pathName: 'booking',
-    icon: 'ph:shopping-cart-light',
-  },
-  {
     id: 4,
     name: 'Contact',
     path: paths.contact,
