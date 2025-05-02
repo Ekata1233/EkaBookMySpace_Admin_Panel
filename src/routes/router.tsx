@@ -18,11 +18,11 @@ import Boxes from 'pages/boxes/Boxes';
 import OfficeTour from 'pages/officetour/OfficeTour';
 import ExploreOffice from 'pages/exploreoffice/ExploreOffice';
 import OfficeSpaceList from 'pages/vendor/OfficeSpaceList';
-import Workbusiness from 'pages/workbusiness/Workbusiness';
 import DashboardOverview from 'pages/payment/DashboardOverview';
 import PaymentManagement from 'pages/payment/PaymentManagement';
 import VendorEarningsSummary from 'pages/payment/VendorEarningsSummary';
 import VendorPayoutManagement from 'pages/payment/VendorPayoutManagement';
+import WorkBusinessPage from 'pages/workbusiness/Workbusiness';
 
 export const routes = [
   {
@@ -84,7 +84,7 @@ export const routes = [
           },
           {
             path: paths.workbusiness,
-            element: <Workbusiness />,
+            element: <WorkBusinessPage />,
           },
           {
             path: paths.dashboardoverview,
@@ -112,6 +112,6 @@ export const routes = [
   },
 ];
 
-const router = createBrowserRouter(routes, { basename: '/dabang' });
+const router = createBrowserRouter(routes, { basename: '/' });
 
 export default router;
