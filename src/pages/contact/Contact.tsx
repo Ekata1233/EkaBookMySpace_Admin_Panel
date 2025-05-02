@@ -39,7 +39,9 @@ const ContactList: React.FC = () => {
 
   return (
     <div className="container mt-4">
-      <h2 className="mb-4 text-center">Contact Information</h2>
+      <h3 className="mb-4 fw-bold" style={{ color: '#6BB7BE' }}>
+        Contact List
+      </h3>
 
       {loading ? (
         <p>Loading...</p>
