@@ -29,6 +29,7 @@ const SaleCard = ({ item }: { item: SaleItem }) => {
       sx={{
         borderRadius: 4,
         bgcolor: bgColor,
+        height: 250,
       }}
     >
       <CardContent sx={(theme) => ({ p: { xs: `${theme.spacing(2.5)} !important` } })}>
