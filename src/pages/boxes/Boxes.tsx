@@ -131,10 +131,11 @@ const Boxes: React.FC = () => {
                   <td style={tdStyle}>
                     <button
                       onClick={() => handleEdit(box)}
-                      style={{ ...btnStyle, backgroundColor: '#6BB7BE' }}
+                      style={{ ...btnStyle, backgroundColor: '#6BB7BE', marginBottom: '10px' }}
                     >
                       Edit
-                    </button>{' '}
+                    </button>
+
                     <button
                       onClick={() => handleDelete(box._id)}
                       style={{ ...btnStyle, backgroundColor: '#DC3545' }}

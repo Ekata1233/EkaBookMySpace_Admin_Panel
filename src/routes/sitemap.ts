@@ -147,36 +147,6 @@ const sitemap: MenuItem[] = [
     pathName: 'contact',
     icon: 'mdi:shopping-outline',
   },
-  {
-    id: 5,
-    name: 'Sales Report',
-    path: '#!',
-    pathName: 'sales-report',
-    icon: 'ph:chart-line',
-  },
-  {
-    id: 6,
-    name: 'Messages',
-    path: '#!',
-    pathName: 'messages',
-    icon: 'mdi:message-processing-outline',
-  },
-  {
-    id: 7,
-    name: 'Settings',
-    path: '#!',
-    pathName: 'settings',
-    icon: 'fluent:settings-24-regular',
-    active: true,
-  },
-  {
-    id: 8,
-    name: 'Sign Out',
-    path: '#!',
-    pathName: 'sign-out',
-    icon: 'humbleicons:logout',
-    active: true,
-  },
 ];
 
 export default sitemap;
