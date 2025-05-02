@@ -15,6 +15,9 @@ export default defineConfig({
       },
     }),
   ],
+  build: {
+    outDir: 'dist', // Explicitly specify the output directory
+  },
   preview: {
     port: 5000,
   },
@@ -22,5 +25,6 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 3001,
   },
-  base: '/dabang',
+  base: '/dabang', // Confirming your subdirectory base
 });
+
