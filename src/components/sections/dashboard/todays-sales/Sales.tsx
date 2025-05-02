@@ -1,8 +1,5 @@
-'use client';
-
 import React, { useEffect, useState } from 'react';
-import { Typography, Grid, Paper, Stack, Button } from '@mui/material';
-import IconifyIcon from 'components/base/IconifyIcon';
+import { Typography, Grid, Paper, Stack } from '@mui/material';
 import SaleCard from './SaleCard';
 import OrderIcon from 'components/icons/OrderIcon';
 import SalesIcon from 'components/icons/SalesIcon';
@@ -20,6 +17,9 @@ interface SaleItem {
 
 const Sales = () => {
   const [totalEarnings, setTotalEarnings] = useState<number>(0);
+  const [totalCommission, setTotalCommission] = useState<number>(0);
+  const [totalSentToVendors, setTotalSentToVendors] = useState<number>(0);
+  const [totalBookings, setTotalBookings] = useState<number>(0);
 
   const fetchRazorpayData = async () => {
     try {
@@ -29,9 +29,20 @@ const Sales = () => {
       if (Array.isArray(json.data)) {
         const earnings = json.data.reduce(
           (sum: number, item: { totalPay: number }) => sum + (item.totalPay || 0),
-          0, // ✅ Comma added to fix ESLint/Prettier issue
+          0,
         );
         setTotalEarnings(earnings);
+        setTotalBookings(json.data.length);
+
+        // Calculate commission (15% of total earnings)
+        const commission = earnings * 0.15;
+        setTotalCommission(commission);
+
+        const sentToVendors = json.data.reduce(
+          (sum: number, item: { totalPay: number }) => sum + (item.totalPay || 0),
+          0,
+        );
+        setTotalSentToVendors(sentToVendors);
       } else {
         console.error('Invalid data format:', json);
       }
@@ -54,28 +65,28 @@ const Sales = () => {
       svgIcon: SalesIcon,
     },
     {
-      label: 'Total Order',
-      value: '300',
+      label: 'Admin Commission (total earned)',
+      value: `₹${totalCommission.toLocaleString()}`,
       growth: '+5%',
       bgColor: 'warning.lighter',
       iconBackgroundColor: 'error.dark',
       svgIcon: OrderIcon,
     },
     {
-      label: 'Sold',
-      value: '5',
-      growth: '+1.2%',
+      label: 'Total Sent to Vendors',
+      value: `₹${totalSentToVendors.toLocaleString()}`,
+      growth: '+3%',
       bgColor: 'success.lighter',
       iconBackgroundColor: 'success.darker',
-      icon: 'ion:pricetag',
+      icon: 'ion:send',
     },
     {
-      label: 'Customers',
-      value: '8',
-      growth: '+0.5%',
+      label: 'Total Bookings (All Vendors)',
+      value: `${totalBookings}`,
+      growth: '+7%',
       bgColor: 'secondary.lighter',
       iconBackgroundColor: 'secondary.main',
-      icon: 'material-symbols:person-add',
+      icon: 'material-symbols:bookmark',
     },
   ];
 
@@ -84,20 +95,27 @@ const Sales = () => {
       <Stack direction="row" justifyContent="space-between" alignItems="center" mb={5.375}>
         <div>
           <Typography variant="h4" mb={0.5}>
-            Today's Sales
+            Dashboard
           </Typography>
           <Typography variant="subtitle1" color="primary.lighter">
-            Sales Summary
+            Summary
           </Typography>
         </div>
-        <Button variant="outlined" startIcon={<IconifyIcon icon="solar:upload-linear" />}>
-          Export
-        </Button>
       </Stack>
 
-      <Grid container spacing={{ xs: 3.875, xl: 2 }} columns={{ xs: 1, sm: 2, md: 4 }}>
+      <Grid
+        container
+        spacing={{ xs: 3.875, xl: 2 }}
+        columns={{ xs: 1, sm: 2, md: 4 }}
+        sx={{ height: '400px' }}
+      >
         {sales.map((item) => (
-          <Grid item xs={1} key={item.label}>
+          <Grid
+            item
+            xs={1}
+            key={item.label}
+            sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}
+          >
             <SaleCard item={item} />
           </Grid>
         ))}
