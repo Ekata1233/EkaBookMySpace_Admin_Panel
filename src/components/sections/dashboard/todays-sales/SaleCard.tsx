@@ -1,6 +1,19 @@
+'use client';
+
 import { Card, CardContent, Stack, Typography } from '@mui/material';
 import IconifyIcon from 'components/base/IconifyIcon';
-import { SaleItem } from 'data/sales';
+import { SvgIconProps } from '@mui/material';
+
+// ✅ Define SaleItem type locally
+interface SaleItem {
+  label: string;
+  value: string;
+  growth: string;
+  bgColor: string;
+  iconBackgroundColor: string;
+  icon?: string;
+  svgIcon?: (props: SvgIconProps) => JSX.Element;
+}
 
 const SaleCard = ({ item }: { item: SaleItem }) => {
   const { value, label, growth, bgColor, iconBackgroundColor, icon, svgIcon: SvgIcon } = item;

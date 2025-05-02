@@ -18,7 +18,7 @@ export const grey = {
 export const indigo = {
   50: '#737791',
   200: '#4079ED',
-  300: '#3f51b5',
+  300: '#6BB7BE',
   500: '#6BB7BE',
   600: '#0F3659',
   700: '#05004E',
