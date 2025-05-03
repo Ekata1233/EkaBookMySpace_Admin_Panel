@@ -60,7 +60,7 @@ const VendorRequest: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ padding: '20px', width: '100%' }}>
+    <div style={{ width: '100%' }}>
       <h2 style={{ color: '#6BB7BE', marginBottom: '20px' }}>Office Space Requests</h2>
 
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
@@ -84,7 +84,15 @@ const VendorRequest: React.FC = () => {
               .map((office, index) => (
                 <tr key={office._id} style={{ borderBottom: '1px solid #ccc' }}>
                   <td style={tdStyle}>{index + 1}</td>
-                  <td style={tdStyle}>{office.officeSpaceName}</td>
+                  <td
+                    style={{
+                      ...tdStyle,
+                      width: '120px',
+                      borderRadius: '6px',
+                    }}
+                  >
+                    {office.officeSpaceName}
+                  </td>
                   <td style={tdStyle}>{office.category}</td>
                   <td style={tdStyle}>{office.city}</td>
                   <td style={tdStyle}>{office.state}</td>
@@ -125,7 +133,7 @@ const thStyle: React.CSSProperties = {
 };
 
 const tdStyle: React.CSSProperties = {
-  padding: '12px',
+  padding: '8px',
   verticalAlign: 'top',
 };
 

@@ -173,7 +173,7 @@ const WorkBusinessPage: React.FC = () => {
                 <td style={tdStyle}>
                   <button
                     onClick={() => handleEdit(item)}
-                    style={{ ...btnStyle, backgroundColor: '#6BB7BE' }}
+                    style={{ ...btnStyle, backgroundColor: '#6BB7BE', marginBottom: '10px' }}
                   >
                     Edit
                   </button>{' '}

@@ -32,6 +32,7 @@ const API_URL = 'https://book-my-space-eta.vercel.app/api/vendor/allVendors';
 
 const VendorEarningsSummary = () => {
   const [vendors, setVendors] = useState<IVendor[]>([]);
+  console.log('all·vendors·:', vendors);
 
   const fetchVendors = async () => {
     try {

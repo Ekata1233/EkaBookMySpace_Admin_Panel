@@ -148,7 +148,7 @@ const OfficeTourPage: React.FC = () => {
                   <td style={tdStyle}>
                     <button
                       onClick={() => handleEdit(tour)}
-                      style={{ ...btnStyle, backgroundColor: '#6BB7BE' }}
+                      style={{ ...btnStyle, backgroundColor: '#6BB7BE', marginBottom: '10px' }}
                     >
                       Edit
                     </button>{' '}
