@@ -5,7 +5,6 @@ import { rootPaths } from 'routes/paths';
 import sitemap from 'routes/sitemap';
 import Logo from 'components/icons/Logo';
 import IconifyIcon from 'components/base/IconifyIcon';
-import Search from 'components/common/Search';
 import ElevationScroll from './ElevationScroll';
 import AccountDropdown from './AccountDropdown';
 import LanguageDropdown from './LanguageDropdown';
@@ -81,13 +80,6 @@ const Topbar = ({ drawerWidth, onHandleDrawerToggle }: TopbarProps) => {
             spacing={{ xs: 1, sm: 2, xl: 5.25 }}
             width={1}
           >
-            <Search
-              sx={{
-                display: { xs: 'none', md: 'block' },
-                minWidth: 300,
-                maxWidth: 550,
-              }}
-            />
             <LanguageDropdown />
             <Notification />
             <AccountDropdown />

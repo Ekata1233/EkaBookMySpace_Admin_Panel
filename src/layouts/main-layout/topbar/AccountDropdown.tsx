@@ -9,26 +9,17 @@ import {
   Typography,
 } from '@mui/material';
 import { MouseEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Profile from 'assets/Background.webp';
 import IconifyIcon from 'components/base/IconifyIcon';
 
-interface MenuItem {
+interface MenuItemData {
   id: number;
   label: string;
   icon: string;
 }
 
-const menuItems: MenuItem[] = [
-  {
-    id: 0,
-    label: 'Profile',
-    icon: 'material-symbols:person',
-  },
-  {
-    id: 1,
-    label: 'My Account',
-    icon: 'material-symbols:account-box-sharp',
-  },
+const menuItems: MenuItemData[] = [
   {
     id: 2,
     label: 'Logout',
@@ -39,6 +30,7 @@ const menuItems: MenuItem[] = [
 const AccountDropdown = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate(); // For React Router navigation
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -48,10 +40,22 @@ const AccountDropdown = () => {
     setAnchorEl(null);
   };
 
+  const handleMenuItemClick = (menuItem: MenuItemData) => {
+    handleClose();
+
+    if (menuItem.id === 2) {
+      // Logout logic
+      localStorage.removeItem('isAuthenticated');
+      navigate('/login'); // Redirect to login page
+    }
+
+    // Add more logic here if needed for other menu items
+  };
+
   const accountMenuItems = menuItems.map((menuItem) => (
     <MenuItem
       key={menuItem.id}
-      onClick={handleClose}
+      onClick={() => handleMenuItemClick(menuItem)}
       sx={{
         '&:hover .account-menu-icon': { color: 'common.white' },
       }}
@@ -80,7 +84,7 @@ const AccountDropdown = () => {
           sx={{
             width: { xs: 48, sm: 60 },
             height: { xs: 48, sm: 60 },
-            borderRadius: 4,
+            borderRadius: 8,
             mr: { xs: 0, xl: 2.5 },
           }}
           alt="User Profile"

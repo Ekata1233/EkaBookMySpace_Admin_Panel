@@ -23,6 +23,8 @@ import PaymentManagement from 'pages/payment/PaymentManagement';
 import VendorEarningsSummary from 'pages/payment/VendorEarningsSummary';
 import VendorPayoutManagement from 'pages/payment/VendorPayoutManagement';
 import WorkBusinessPage from 'pages/workbusiness/Workbusiness';
+import Login from 'pages/Login';
+import PrivateRoute from 'components/PrivateRoute';
 
 export const routes = [
   {
@@ -33,74 +35,38 @@ export const routes = [
     ),
     children: [
       {
-        path: rootPaths.root,
-        element: (
-          <MainLayout>
-            <Suspense fallback={<PageLoader />}>
-              <Outlet />
-            </Suspense>
-          </MainLayout>
-        ),
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        element: <PrivateRoute />, // 👈 Require login for all routes below
         children: [
           {
-            index: true,
-            element: <Dashboard />,
-          },
-          {
-            path: paths.vendorlist,
-            element: <VendorList />,
-          },
-          {
-            path: paths.officespacelist,
-            element: <OfficeSpaceList />,
-          },
-          {
-            path: paths.vendorrequest,
-            element: <VendorRequest />,
-          },
-          {
-            path: paths.user,
-            element: <User />,
-          },
-          {
-            path: paths.booking,
-            element: <Booking />,
-          },
-          {
-            path: paths.contact,
-            element: <Contact />,
-          },
-          {
-            path: paths.boxeslist,
-            element: <Boxes />,
-          },
-          {
-            path: paths.officetour,
-            element: <OfficeTour />,
-          },
-          {
-            path: paths.exploreoffice,
-            element: <ExploreOffice />,
-          },
-          {
-            path: paths.workbusiness,
-            element: <WorkBusinessPage />,
-          },
-          {
-            path: paths.dashboardoverview,
-            element: <DashboardOverview />,
-          },
-          {
-            path: paths.paymentmanagement,
-            element: <PaymentManagement />,
-          },
-          {
-            path: paths.vendorearningsummary,
-            element: <VendorEarningsSummary />,
-          },
-          {
-            path: paths.vendorpayoutmanagement,
-            element: <VendorPayoutManagement />,
+            path: rootPaths.root,
+            element: (
+              <MainLayout>
+                <Suspense fallback={<PageLoader />}>
+                  <Outlet />
+                </Suspense>
+              </MainLayout>
+            ),
+            children: [
+              { index: true, element: <Dashboard /> },
+              { path: paths.vendorlist, element: <VendorList /> },
+              { path: paths.officespacelist, element: <OfficeSpaceList /> },
+              { path: paths.vendorrequest, element: <VendorRequest /> },
+              { path: paths.user, element: <User /> },
+              { path: paths.booking, element: <Booking /> },
+              { path: paths.contact, element: <Contact /> },
+              { path: paths.boxeslist, element: <Boxes /> },
+              { path: paths.officetour, element: <OfficeTour /> },
+              { path: paths.exploreoffice, element: <ExploreOffice /> },
+              { path: paths.workbusiness, element: <WorkBusinessPage /> },
+              { path: paths.dashboardoverview, element: <DashboardOverview /> },
+              { path: paths.paymentmanagement, element: <PaymentManagement /> },
+              { path: paths.vendorearningsummary, element: <VendorEarningsSummary /> },
+              { path: paths.vendorpayoutmanagement, element: <VendorPayoutManagement /> },
+            ],
           },
         ],
       },
